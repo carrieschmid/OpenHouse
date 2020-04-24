@@ -28,6 +28,11 @@ namespace API {
                 opt.UseSqlite (Configuration.GetConnectionString ("DefaultConnection"));
 
             });
+            services.AddCors (opt => {
+                opt.AddPolicy ("CorsPolicy", policy => {
+                    policy.AllowAnyHeader ().AllowAnyMethod ().WithOrigins ("http://localhost:3000");
+                });
+            });
             services.AddControllers ();
 
         }
@@ -37,6 +42,9 @@ namespace API {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             }
+
+            //what is correct order of this? check source code
+            app.UseCors ("CorsPolicy");
 
             app.UseHttpsRedirection ();
 
