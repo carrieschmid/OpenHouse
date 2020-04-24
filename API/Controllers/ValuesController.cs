@@ -2,23 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace DatingApp.API.Controllers {
     [Route ("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase {
+
+        private readonly DataContext _context;
+
+        public ValuesController (DataContext context) {
+            _context = context;
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get () {
-            return new string[] { "value1", "value2" };
+        public async Task<ActionResult<IEnumerable<Value>>> Get () {
+            var values = await _context.Values.ToListAsync ();
+            return Ok (values);
+
         }
 
         // GET api/values/5
-        [HttpGet ("{id}")]
         //once we hit the value (5) it is available in the parameter of our method, we'll return a single string called "value"
-        public ActionResult<string> Get (int id) {
-            return "value";
+        [HttpGet ("{id}")]
+        public async Task<ActionResult<Value>> Get (int id) {
+            var value = await _context.Values.FindAsync (id);
+            return Ok (value);
         }
 
         // POST api/values
