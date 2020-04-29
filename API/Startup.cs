@@ -46,18 +46,20 @@ namespace API {
                 app.UseDeveloperExceptionPage ();
             }
 
-            //what is correct order of this? check source code
-            app.UseCors ("CorsPolicy");
-
-            app.UseHttpsRedirection ();
+            // app.UseHttpsRedirection();
 
             app.UseRouting ();
+
+            app.UseCors ("CorsPolicy");
+
+            app.UseAuthentication ();
 
             app.UseAuthorization ();
 
             app.UseEndpoints (endpoints => {
                 endpoints.MapControllers ();
             });
+
         }
     }
 }
