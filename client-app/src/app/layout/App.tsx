@@ -3,6 +3,7 @@ import { Header, Icon, List } from "semantic-ui-react";
 import axios from "axios";
 import { ISession } from "../models/session";
 import { render } from "@testing-library/react";
+import NavBar from "../../features/nav/NavBar";
 
 interface IState {
   sessions: ISession[];
@@ -21,10 +22,7 @@ const App = () => {
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="users" />
-        <Header.Content>OpenHouse</Header.Content>
-      </Header>
+      <NavBar />
       <List>
         {sessions.map((session) => (
           <List.Item key={session.id}>{session.title}</List.Item>
