@@ -10,36 +10,36 @@ export interface ISession {
   address: string;
   city: string;
 
-  // isGoing: boolean;
-  // isHost: boolean;
-  // attendees: IAttendee[];
+  isGoing: boolean;
+  isHost: boolean;
+  attendees: IAttendee[];
 }
 
-// export interface IActivityFormValues extends Partial<IActivity> {
-//     time?: Date;
-// }
+export interface ISessionFormValues extends Partial<ISession> {
+  time?: Date;
+}
 
-// export class ActivityFormValues implements IActivityFormValues {
-//     id?: string = undefined;
-//     title: string = "";
-//     category: string = "";
-//     description: string = "";
-//     date?: Date = undefined;
-//     time?: Date = undefined;
-//     city: string = "";
-//     venue: string = "";
+export class SessionFormValues implements ISessionFormValues {
+  id?: string = undefined;
+  title: string = "";
+  category: string = "";
+  description: string = "";
+  date?: Date = undefined;
+  timeblock?: string = undefined;
+  address: string = "";
+  city: string = "";
 
-//     constructor(init?: IActivityFormValues) {
-//         if (init && init.date) {
-//             init.time = init.date;
-//         }
-//         Object.assign(this, init);
-//     }
-// }
+  constructor(init?: ISessionFormValues) {
+    if (init && init.date) {
+      init.time = init.date;
+    }
+    Object.assign(this, init);
+  }
+}
 
-// export interface IAttendee {
-//     username: string;
-//     displayName: string;
-//     image: string;
-//     isHost: boolean;
-// }
+export interface IAttendee {
+  username: string;
+  displayName: string;
+  image: string;
+  isHost: boolean;
+}

@@ -1,29 +1,29 @@
 import React, { useContext, Fragment } from "react";
-import { Item, Image, Label } from "semantic-ui-react";
-// import { observer } from "mobx-react-lite";
-// import ActivityListItem from "./ActivityListItem";
-// import { RootStoreContext } from "../../../app/stores/rootStore";
-// import format from "date-fns/esm/format";
+import { Item, Label } from "semantic-ui-react";
+import { observer } from "mobx-react-lite";
+import SessionListItem from "./SessionListItem";
+import { RootStoreContext } from "../../../app/stores/rootStore";
+import format from "date-fns/esm/format";
 
 const SessionList: React.FC = () => {
-  //   const rootStore = useContext(RootStoreContext);
-  //   const { activitiesByDate } = rootStore.activityStore;
+  const rootStore = useContext(RootStoreContext);
+  const { sessionsByDate } = rootStore.sessionStore;
   return (
-    <Item.Group>
-      <Item>
-        <Item.Image size="tiny" src="/images/wireframe/image.png" />
-
-        <Item.Content>
-          <Item.Header as="a">Header</Item.Header>
-          <Item.Meta>Description</Item.Meta>
-          <Item.Description>
-            <Image src="/images/wireframe/short-paragraph.png" />
-          </Item.Description>
-          <Item.Extra>Additional Details</Item.Extra>
-        </Item.Content>
-      </Item>
-    </Item.Group>
+    <Fragment>
+      {sessionsByDate.map(([group, sessions]) => (
+        <Fragment key={group}>
+          <Label size="large" color="blue">
+            {/* {format(group, "eeee, MMMM do ")} */}
+          </Label>
+          <Item.Group divided>
+            {sessions.map((session) => (
+              <SessionListItem key={session.id} session={session} />
+            ))}
+          </Item.Group>
+        </Fragment>
+      ))}
+    </Fragment>
   );
 };
 
-export default SessionList;
+export default observer(SessionList);
