@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Form as FinalForm, Field } from "react-final-form";
 import TextInput from "../../app/common/form/TextInput";
+import SelectInput from "../../app/common/form/SelectInput";
 import { Form, Button, Header } from "semantic-ui-react";
 import { IUserFormValues } from "../../app/models/user";
 import { RootStoreContext } from "../../app/stores/rootStore";
@@ -38,7 +39,7 @@ const RegisterForm = () => {
         <Form onSubmit={handleSubmit} error>
           <Header
             as="h2"
-            content="Sign up to Reactivities"
+            content="Sign up to OpenHouse"
             color="teal"
             textAlign="center"
           />
@@ -53,7 +54,35 @@ const RegisterForm = () => {
             name="password"
             component={TextInput}
             placeholder="Password"
-            // type="password"
+            type="password"
+          />
+          <Field name="phone" component={TextInput} placeholder="Phone" />
+          <Field name="address" component={TextInput} placeholder="Address" />
+          <Field name="city" component={TextInput} placeholder="City" />
+          <Field name="state" component={TextInput} placeholder="State" />
+          <Field
+            name="interests"
+            component={SelectInput}
+            placeholder="Interests"
+            type="interests"
+          />
+          <Field
+            name="bgcheck"
+            component={SelectInput}
+            placeholder="Background Check"
+            type="phone"
+          />
+          <Field
+            name="firstaid"
+            component={SelectInput}
+            placeholder="First Aid"
+            type="firstaid"
+          />
+          <Field
+            name="terms"
+            component={SelectInput}
+            placeholder="Terms of Agreement"
+            type="terms"
           />
           {submitError && !dirtySinceLastSubmit && (
             <ErrorMessage error={submitError} />

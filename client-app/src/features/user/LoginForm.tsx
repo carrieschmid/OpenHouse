@@ -36,7 +36,7 @@ const LoginForm = () => {
         <Form onSubmit={handleSubmit} error>
           <Header
             as="h2"
-            content="Login to Reactivities"
+            content="Login to OpenHouse"
             color="teal"
             textAlign="center"
           />
