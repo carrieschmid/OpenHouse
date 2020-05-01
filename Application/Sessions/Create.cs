@@ -29,8 +29,9 @@ namespace Application.Sessions {
         //         RuleFor (x => x.Description).NotEmpty ();
         //         RuleFor (x => x.Category).NotEmpty ();
         //         RuleFor (x => x.Date).NotEmpty ();
+        //         RuleFor (x => x.Timeblock).NotEmpty ();
         //         RuleFor (x => x.City).NotEmpty ();
-        //         RuleFor (x => x.Venue).NotEmpty ();
+        //         RuleFor (x => x.Address).NotEmpty ();
         //     }
         // }
 
