@@ -8,6 +8,9 @@ namespace Application.User {
         public string BgCheck { get; set; }
         public string FirstAid { get; set; }
         public string Terms { get; set; }
+        public string Token { get; set; }
+        public string Username { get; set; }
+        public string Image { get; set; }
 
     }
 }
