@@ -14,11 +14,13 @@ namespace API.Controllers {
 
         }
 
-        // [AllowAnonymous]
-        // [HttpPost ("register")]
-        // public async Task<ActionResult<AppUser>> Register (Register.Command command) {
-        //     return await Mediator.Send (command);
-        // }
+        [AllowAnonymous]
+        [HttpPost ("register")]
+        public async Task<ActionResult<User>> Register (Register.Command command) {
+            return await Mediator.Send (command);
+        }
+
+        //User has been changed to AppUser from original code
 
         // [HttpGet]
         // public async Task<ActionResult<AppUser>> CurrentUser () {
