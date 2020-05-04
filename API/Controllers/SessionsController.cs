@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.Sessions;
 using Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 // using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace API.Controllers {
         }
 
         [HttpGet ("{id}")]
-        // [Authorize]
+        [Authorize]
         public async Task<ActionResult<Session>> Details (Guid id) {
             return await Mediator.Send (new Details.Query { Id = id });
         }
