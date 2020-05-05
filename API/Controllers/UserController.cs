@@ -22,10 +22,11 @@ namespace API.Controllers {
 
         //User has been changed to AppUser from original code
 
-        // [HttpGet]
-        // public async Task<ActionResult<AppUser>> CurrentUser () {
-        //     return await Mediator.Send (new CurrentUser.Query ());
-        // }
+        [HttpGet]
+        public async Task<ActionResult<User>> CurrentUser () {
+            return await Mediator.Send (new CurrentUser.Query ());
+        }
 
+        //User has been changed to AppUser from original code
     }
 }
