@@ -19,6 +19,9 @@ export const SessionDashboard: React.FC = () => {
       <Grid.Column width={10}>
         <SessionList />
       </Grid.Column>
+      {/* <Menu.Item>
+        <Button positive content="Create Session" />
+      </Menu.Item> */}
       <Grid.Column width={6}>
         <h2>Session filters</h2>
       </Grid.Column>

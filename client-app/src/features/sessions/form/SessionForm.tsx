@@ -153,8 +153,8 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                 <Button
                   onClick={
                     session.id
-                      ? () => history.push(`/activities${session.id}`)
-                      : () => history.push("/activities")
+                      ? () => history.push(`/session${session.id}`)
+                      : () => history.push("/sessions")
                   }
                   disabled={loading}
                   floated="right"

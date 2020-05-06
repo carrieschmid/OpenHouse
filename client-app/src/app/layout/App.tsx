@@ -9,7 +9,7 @@ import {
   RouteComponentProps,
   Switch
 } from "react-router-dom";
-import HomePage from "../../features/home/HomePage";
+import HomePage from "../../features/pages/HomePage";
 import SessionForm from "../../features/sessions/form/SessionForm";
 import LoginForm from "../../features/user/LoginForm";
 import SessionDetails from "../../features/sessions/details/SessionDetails";
@@ -40,29 +40,31 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
   return (
     <Fragment>
       <ModalContainer />
+
       <ToastContainer position="bottom-right" />
+      <NavBar />
       <Route exact path="/" component={HomePage} />
+
       {/* hit a page with route and anything else, this will match */}
       <Route
         path={"/(.+)"}
         render={() => (
           <Fragment>
-            <NavBar />
             <Container style={{ marginTop: "7em" }}>
               <Switch>
-                <PrivateRoute
-                  exact
-                  path="/sessions"
-                  component={SessionDashboard}
-                />
-                <PrivateRoute path="/sessions/:id" component={SessionDetails} />
-                <PrivateRoute
+                {/* <Switch /> component will only render the first route that matches/includes the path. Once it finds the first route that matches the path, it will not look for any other matches. Not only that, it allows for nested routes to work properly, which is something that <Router /> will not be able to handle. */}
+
+                <Route exact path="/sessions" component={SessionDashboard} />
+                <Route path="/sessions/:id" component={SessionDetails} />
+                <Route
                   key={location.key}
                   path={["/createSession", "/manage/:id"]}
                   component={SessionForm}
                 />
-                <PrivateRoute path="/login" component={LoginForm} />
-                <Route component={NotFound} />
+                <Route path="/login" component={LoginForm} />
+                {/* <PrivateRoute path="/members" component={MemberDashboard} /> */}
+                {/* <PrivateRoute path="/about" component={AboutPage} /> */}
+                {/* <Route component={NotFound} /> */}
               </Switch>
             </Container>
           </Fragment>
