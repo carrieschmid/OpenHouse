@@ -8,6 +8,7 @@ namespace Persistence {
         public DataContext (DbContextOptions options) : base (options) {
 
         }
+        public DbSet<Kid> Kids { get; set; }
         public DbSet<Session> Sessions { get; set; }
 
         protected override void OnModelCreating (ModelBuilder builder) {
