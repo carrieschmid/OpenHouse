@@ -14,6 +14,7 @@ namespace Domain {
         public string City { get; set; }
         public string Activity1 { get; set; }
         public string Activity2 { get; set; }
+        public virtual ICollection<UserSession> UserSessions { get; set; }
 
     }
 }

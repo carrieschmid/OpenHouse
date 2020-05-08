@@ -14,7 +14,7 @@ namespace Persistence {
 
         public DbSet<Kid> Kids { get; set; }
 
-        // public DbSet<UserActivity> UserActivities { get; set; }
+        public DbSet<UserSession> UserSessions { get; set; }
 
         protected override void OnModelCreating (ModelBuilder builder) {
             base.OnModelCreating (builder);
@@ -25,19 +25,18 @@ namespace Persistence {
                     new Value { Id = 3, Name = "Value 103" }
 
                 );
-            //     builder.Entity<UserActivity> (x => x.HasKey (ua => new { ua.AppUserId, ua.ActivityId }));
+            builder.Entity<UserSession> (x => x.HasKey (ua => new { ua.AppUserId, ua.SessionId }));
 
-            //     builder.Entity<UserActivity> ()
-            //         .HasOne (u => u.AppUser)
-            //         .WithMany (a => a.UserActivities)
-            //         .HasForeignKey (u => u.AppUserId);
+            builder.Entity<UserSession> ()
+                .HasOne (u => u.AppUser)
+                .WithMany (a => a.UserSessions)
+                .HasForeignKey (u => u.AppUserId);
 
-            //     builder.Entity<UserActivity> ()
-            //         .HasOne (a => a.Activity)
-            //         .WithMany (u => u.UserActivities)
-            //         .HasForeignKey (a => a.ActivityId);
-            // }
-
+            builder.Entity<UserSession> ()
+                .HasOne (a => a.Session)
+                .WithMany (u => u.UserSessions)
+                .HasForeignKey (a => a.SessionId);
         }
+
     }
 }

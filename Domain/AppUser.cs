@@ -14,6 +14,6 @@ namespace Domain {
 
         //other are already built into Identity
 
-        // public virtual ICollection<UserActivity> UserActivities { get; set; }
+        public virtual ICollection<UserSession> UserSessions { get; set; }
     }
 }

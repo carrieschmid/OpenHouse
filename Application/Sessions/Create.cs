@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-// using Application.Interfaces;
+using Application.Interfaces;
 using Domain;
 // using FluentValidation;
 using MediatR;
@@ -39,8 +39,10 @@ namespace Application.Sessions {
 
         public class Handler : IRequestHandler<Command> {
             private readonly DataContext _context;
-            public Handler (DataContext context) {
+            private readonly IUserAccessor _userAccessor;
+            public Handler (DataContext context, IUserAccessor userAccessor) {
                 _context = context;
+                _userAccessor = userAccessor;
             }
 
             public async Task<Unit> Handle (Command request, CancellationToken cancellationToken)
@@ -58,6 +60,18 @@ namespace Application.Sessions {
 
                 };
                 _context.Sessions.Add (session);
+
+                var user = await _context.Users.SingleOrDefaultAsync (x => x.UserName == _userAccessor.GetCurrentUsername ());
+
+                var attendee = new UserSession {
+                    AppUser = user,
+                    Session = session,
+                    IsHost = true,
+                    DateJoined = DateTime.Now
+
+                };
+
+                _context.UserSessions.Add (attendee);
 
                 var success = await
                 _context.SaveChangesAsync () > 0;
