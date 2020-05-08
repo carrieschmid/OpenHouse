@@ -11,32 +11,59 @@ namespace Persistence {
         public static async Task SeedData (DataContext context) {
             //add user manager back here
 
-            // if (!userManager.Users.Any ()) {
-            //     var users = new List<AppUser> {
-            //         new AppUser {
-            //         Id = "a",
-            //         DisplayName = "Bob",
-            //         UserName = "bob",
-            //         Email = "bob@test.com"
-            //         },
-            //         new AppUser {
-            //         Id = "b",
-            //         DisplayName = "Jane",
-            //         UserName = "jane",
-            //         Email = "jane@test.com"
-            //         },
-            //         new AppUser {
-            //         Id = "c",
-            //         DisplayName = "Tom",
-            //         UserName = "tom",
-            //         Email = "tom@test.com"
-            //         },
-            //     };
+            if (!userManager.Users.Any ()) {
+                var users = new List<AppUser> {
+                    new AppUser {
+                    Id = "a",
+                    DisplayName = "Bob",
+                    UserName = "bob",
+                    Email = "bob@test.com"
+                    },
+                    new AppUser {
+                    Id = "b",
+                    DisplayName = "Jane",
+                    UserName = "jane",
+                    Email = "jane@test.com"
+                    },
+                    new AppUser {
+                    Id = "c",
+                    DisplayName = "Tom",
+                    UserName = "tom",
+                    Email = "tom@test.com"
+                    },
+                };
 
-            //     foreach (var user in users) {
-            //         await userManager.CreateAsync (user, "Pa$$w0rd");
-            //     }
-            // }
+                foreach (var user in users) {
+                    await userManager.CreateAsync (user, "Pa$$w0rd");
+                }
+            }
+
+            if (!context.Kids.Any ()) {
+                var kids = new List<Kid> {
+                    new Kid {
+                    Name = "Bobby",
+                    Age = "10",
+                    Interests = "Swimming",
+                    WorkingOn = "Math"
+                    },
+                    new Kid {
+                    Name = "Jenny",
+                    Age = "10",
+                    Interests = "Legos",
+                    WorkingOn = "Writing"
+                    },
+                    new Kid {
+                    Name = "Sam",
+                    Age = "8",
+                    Interests = "Science",
+                    WorkingOn = "Physical Activity"
+                    }
+
+                };
+                context.Kids.AddRange (kids);
+                context.SaveChanges ();
+
+            }
 
             if (!context.Sessions.Any ()) {
                 var sessions = new List<Session> {
@@ -109,6 +136,7 @@ namespace Persistence {
                     Activity2 = "Paint"
 
                     }
+
                 };
 
                 context.Sessions.AddRange (sessions);

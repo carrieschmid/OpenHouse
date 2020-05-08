@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers {
 
-    public class KidController : BaseController {
+    public class KidsController : BaseController {
 
         [HttpGet]
         public async Task<ActionResult<List<Kid>>> List () {
@@ -24,7 +24,7 @@ namespace API.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult<Unit>> Create (AddKids.Command command) {
+        public async Task<ActionResult<Unit>> Create (Add.Command command) {
             return await Mediator.Send (command);
         }
 

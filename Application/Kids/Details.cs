@@ -21,12 +21,12 @@ namespace Application.Kids {
                 _context = context;
             }
 
-            public async Task<Session> Handle (Query request, CancellationToken cancellationToken) {
+            public async Task<Kid> Handle (Query request, CancellationToken cancellationToken) {
 
-                var session = await _context.Sessions
+                var kid = await _context.Kids
                     .FindAsync (request.Id);
 
-                return session;
+                return kid;
             }
         }
     }

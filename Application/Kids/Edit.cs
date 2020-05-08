@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Persistence;
 
-namespace Application.Sessions {
+namespace Application.Kids {
     public class Edit {
         public class Command : IRequest {
             public Guid Id { get; set; }
@@ -27,12 +27,12 @@ namespace Application.Sessions {
             {
                 var kid = await _context.Kids.FindAsync (request.Id);
 
-                if (session == null)
+                if (kid == null)
                     throw new Exception ("Not found");
 
                 kid.Name = request.Name ?? kid.Name;
                 kid.Age = request.Age ?? kid.Age;
-                kid.Inerests = request.Inerests?? kid.Interests;
+                kid.Interests = request.Interests?? kid.Interests;
                 kid.WorkingOn = request.WorkingOn ?? kid.WorkingOn;
 
                 var success = await
