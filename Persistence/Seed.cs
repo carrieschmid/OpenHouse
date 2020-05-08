@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Identity;
 namespace Persistence {
     public class Seed {
 
-        public static async Task SeedData (DataContext context) {
-            //add user manager back here
-
+        public static async Task SeedData (DataContext context,
+            UserManager<AppUser> userManager) {
             if (!userManager.Users.Any ()) {
                 var users = new List<AppUser> {
                     new AppUser {
