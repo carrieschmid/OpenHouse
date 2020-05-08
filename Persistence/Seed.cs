@@ -8,34 +8,35 @@ using Microsoft.AspNetCore.Identity;
 namespace Persistence {
     public class Seed {
 
-        public static async Task SeedData (DataContext context, UserManager<AppUser> userManager) {
+        public static async Task SeedData (DataContext context) {
+            //add user manager back here
 
-            if (!userManager.Users.Any ()) {
-                var users = new List<AppUser> {
-                    new AppUser {
-                    Id = "a",
-                    DisplayName = "Bob",
-                    UserName = "bob",
-                    Email = "bob@test.com"
-                    },
-                    new AppUser {
-                    Id = "b",
-                    DisplayName = "Jane",
-                    UserName = "jane",
-                    Email = "jane@test.com"
-                    },
-                    new AppUser {
-                    Id = "c",
-                    DisplayName = "Tom",
-                    UserName = "tom",
-                    Email = "tom@test.com"
-                    },
-                };
+            // if (!userManager.Users.Any ()) {
+            //     var users = new List<AppUser> {
+            //         new AppUser {
+            //         Id = "a",
+            //         DisplayName = "Bob",
+            //         UserName = "bob",
+            //         Email = "bob@test.com"
+            //         },
+            //         new AppUser {
+            //         Id = "b",
+            //         DisplayName = "Jane",
+            //         UserName = "jane",
+            //         Email = "jane@test.com"
+            //         },
+            //         new AppUser {
+            //         Id = "c",
+            //         DisplayName = "Tom",
+            //         UserName = "tom",
+            //         Email = "tom@test.com"
+            //         },
+            //     };
 
-                foreach (var user in users) {
-                    await userManager.CreateAsync (user, "Pa$$w0rd");
-                }
-            }
+            //     foreach (var user in users) {
+            //         await userManager.CreateAsync (user, "Pa$$w0rd");
+            //     }
+            // }
 
             if (!context.Sessions.Any ()) {
                 var sessions = new List<Session> {
@@ -56,6 +57,9 @@ namespace Persistence {
                     Category = "Art",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
+                    Activity1 = "Paint",
+                    Activity2 = "Paint"
+
                     },
                     new Session {
                     Title = "Future Activity 1",
@@ -65,6 +69,8 @@ namespace Persistence {
                     Category = "Language",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
+                    Activity1 = "Paint",
+                    Activity2 = "Paint"
 
                     },
                     new Session {
@@ -75,6 +81,8 @@ namespace Persistence {
                     Category = "Science",
                     Address = "2915 NE Jarrett St.",
                     City = "Portland",
+                    Activity1 = "Paint",
+                    Activity2 = "Paint"
 
                     },
                     new Session {
@@ -85,6 +93,8 @@ namespace Persistence {
                     Category = "Craft",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
+                    Activity1 = "Paint",
+                    Activity2 = "Paint"
 
                     },
                     new Session {
@@ -95,12 +105,19 @@ namespace Persistence {
                     Category = "Craft",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
+                    Activity1 = "Paint",
+                    Activity2 = "Paint"
 
                     }
                 };
 
                 context.Sessions.AddRange (sessions);
                 context.SaveChanges ();
+                //this is probably where the delete data methods would go
+                // var context = new SampleContext ();
+                // var author = new Author { AuthorId = 1 };
+                // context.Entry (author).State = EntityState.Deleted;
+                // context.SaveChanges ();
             }
         }
     }
