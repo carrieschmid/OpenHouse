@@ -74,6 +74,13 @@ namespace Persistence {
                     Category = "Math",
                     Address = "2915 NE Jarrett St",
                     City = "Portland",
+                    UserSessions = new List<UserSession> {
+                    new UserSession {
+                    AppUserId = "a",
+                    IsHost = true,
+                    DateJoined = DateTime.Now.AddMonths (2)
+                    },
+                    }
                     },
                     new Session {
                     Title = "Past Activity 2",
@@ -84,8 +91,14 @@ namespace Persistence {
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
                     Activity1 = "Paint",
-                    Activity2 = "Paint"
-
+                    Activity2 = "Paint",
+                    UserSessions = new List<UserSession> {
+                    new UserSession {
+                    AppUserId = "a",
+                    IsHost = true,
+                    DateJoined = DateTime.Now.AddMonths (2)
+                    },
+                    },
                     },
                     new Session {
                     Title = "Future Activity 1",

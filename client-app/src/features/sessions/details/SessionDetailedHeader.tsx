@@ -41,7 +41,7 @@ const SessionDetailedHeader: React.FC<{ session: ISession }> = ({
                   content={session.title}
                   style={{ color: "white" }}
                 />
-                <p>{format(session.date, "eee,  MMM do ")}</p>
+                {/* <p>{format(session.date, "eee,  MMM do ")}</p> */}
                 {/* <p>
                   Hosted by <strong>Bob</strong>
                 </p> */}

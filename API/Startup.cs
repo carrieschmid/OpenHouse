@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Sessions;
+using AutoMapper;
 using Domain;
 using FluentValidation.AspNetCore;
 using Infrastructure.Security;
@@ -37,6 +38,7 @@ namespace API {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddDbContext<DataContext> (opt => {
+                opt.UseLazyLoadingProxies ();
                 opt.UseSqlite (Configuration.GetConnectionString ("DefaultConnection"));
 
             });
@@ -47,6 +49,7 @@ namespace API {
                 });
             });
             services.AddMediatR (typeof (List.Handler).Assembly);
+            services.AddAutoMapper (typeof (List.Handler));
 
             services.AddMvc (opt => {
                     var policy = new AuthorizationPolicyBuilder ().RequireAuthenticatedUser ().Build ();
@@ -63,6 +66,15 @@ namespace API {
             identityBuilder.AddEntityFrameworkStores<DataContext> ();
             identityBuilder.AddSignInManager<SignInManager<AppUser>> ();
 
+            services.AddAuthorization (opt => {
+                opt.AddPolicy ("isActivityHost", policy => {
+                    policy.Requirements.Add (new IsHostRequirement ());
+                });
+
+            });
+
+            services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler> ();
+
             var key = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (Configuration["TokenKey"]));
 
             services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme).AddJwtBearer (opt => {
@@ -77,7 +89,6 @@ namespace API {
             services.AddScoped<IJwtGenerator, JwtGenerator> ();
             services.AddScoped<IUserAccessor, UserAccessor> ();
 
-            services.AddAuthentication ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

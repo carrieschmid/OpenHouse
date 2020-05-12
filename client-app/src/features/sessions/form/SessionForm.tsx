@@ -12,7 +12,7 @@ import SelectInput from "../../../app/common/form/SelectInput";
 import DateInput from "../../../app/common/form/DateInput";
 import { category } from "../../../app/common/options/categoryOptions";
 import { timeblock } from "../../../app/common/options/timeblockOptions";
-import { combinedDateAndTime } from "../../../app/common/util/util";
+// import { combinedDateAndTime } from "../../../app/common/util/util";
 import {
   combineValidators,
   isRequired,
@@ -65,9 +65,9 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
   }, [loadSession, match.params.id]);
 
   const handleFinalFormSubmit = (values: any) => {
-    const dateAndTime = combinedDateAndTime(values.date, values.time);
+    // const dateAndTime = combinedDateAndTime(values.date, values.time);
     const { date, time, ...session } = values;
-    session.date = dateAndTime;
+    // session.date = dateAndTime;
     // combined date and tim enot working
     if (!session.id) {
       let newSession = {

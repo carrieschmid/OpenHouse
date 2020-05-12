@@ -3,7 +3,7 @@ import { Item, Label } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import SessionListItem from "./SessionListItem";
 import { RootStoreContext } from "../../../app/stores/rootStore";
-import format from "date-fns/esm/format";
+// import format from "date-fns/esm/format";
 
 const SessionList: React.FC = () => {
   const rootStore = useContext(RootStoreContext);

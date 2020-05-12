@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 import SessionList from "./SessionList";
 import { observer } from "mobx-react-lite";
+import { Link, NavLink } from "react-router-dom";
 import { LoadingComponent } from "../../../app/layout/LoadingComponent";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 
@@ -19,11 +20,13 @@ export const SessionDashboard: React.FC = () => {
       <Grid.Column width={10}>
         <SessionList />
       </Grid.Column>
-      {/* <Menu.Item>
-        <Button positive content="Create Session" />
-      </Menu.Item> */}
       <Grid.Column width={6}>
-        <h2>Session filters</h2>
+        <Button
+          as={NavLink}
+          to="/createSession"
+          positive
+          content="Create Session"
+        />
       </Grid.Column>
     </Grid>
   );
