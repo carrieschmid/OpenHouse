@@ -10,5 +10,7 @@ namespace Domain {
         public string Interests { get; set; }
         public string WorkingOn { get; set; }
 
+        public virtual ICollection<UserKid> UserKids { get; set; }
+
     }
 }

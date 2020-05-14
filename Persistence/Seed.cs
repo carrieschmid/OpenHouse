@@ -43,7 +43,12 @@ namespace Persistence {
                     Name = "Bobby",
                     Age = "10",
                     Interests = "Swimming",
-                    WorkingOn = "Math"
+                    WorkingOn = "Math",
+                    UserKids = new List<UserKid> {
+                    new UserKid {
+                    AppUserId = "a",
+                    },
+                    },
                     },
                     new Kid {
                     Name = "Jenny",

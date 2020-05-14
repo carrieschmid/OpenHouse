@@ -15,6 +15,7 @@ namespace Domain {
         public string Activity1 { get; set; }
         public string Activity2 { get; set; }
         public virtual ICollection<UserSession> UserSessions { get; set; }
+        public virtual ICollection<UserKid> UserKids { get; set; }
 
     }
 }
