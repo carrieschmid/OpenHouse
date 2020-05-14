@@ -12,7 +12,7 @@ const NavBar = () => {
   // const { isLoggedIn, user } = rootStore.userStore;
   const { openModal } = rootStore.modalStore;
   return (
-    <Menu fixed="top" inverted>
+    <Menu fixed="top" style={{ marginBottom: 200 }} inverted>
       <Container>
         <Menu.Item name="Homepage" as={Link} to="/">
           <img
@@ -21,7 +21,6 @@ const NavBar = () => {
             style={{ marginRight: "10px" }}
           />
         </Menu.Item>
-        <Menu.Item name="About" />
         <Menu.Item name="Sessions" as={Link} to="/sessions" />
         <Menu.Item name="Members" />
 
