@@ -45,6 +45,7 @@ export default class SessionStore {
       runInAction("loading Sessions", () => {
         sessions.forEach((session) => {
           setSessionProps(session, this.rootStore.userStore.user!);
+          this.session = session;
           this.sessionRegistry.set(session.id, session);
         });
         this.loadingInitial = false;

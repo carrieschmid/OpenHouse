@@ -12,11 +12,11 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
       <Segment>
         <Item.Group>
           <Item>
-            {/* <Item.Image
+            <Item.Image
               size="tiny"
               circular
-              src={host.image || "/assets/user.png"}
-            /> */}
+              // src={host.image || "/assets/user.png"}
+            />
             <Item.Content>
               <Item.Header as={Link} to={`/sessions/${session.id}`}>
                 {session.title}

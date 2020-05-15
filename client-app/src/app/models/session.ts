@@ -1,4 +1,4 @@
-import { string } from "prop-types";
+// import { string } from "prop-types";
 
 export interface ISession {
   id: string;
@@ -9,7 +9,6 @@ export interface ISession {
   timeblock: string;
   address: string;
   city: string;
-
   isGoing: boolean;
   isHost: boolean;
   attendees: IAttendee[];

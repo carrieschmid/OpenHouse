@@ -1,5 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Segment, Form, Button, GridColumn, Grid } from "semantic-ui-react";
+import {
+  Segment,
+  Form,
+  Button,
+  GridColumn,
+  Grid,
+  Divider,
+  Header,
+  Table,
+  Item
+} from "semantic-ui-react";
 import { SessionFormValues } from "../../../app/models/session";
 import { v4 as uuid } from "uuid";
 
@@ -82,7 +92,7 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
 
   return (
     <Grid>
-      <GridColumn width={10}>
+      <GridColumn width={16}>
         <Segment clearing>
           <FinalForm
             validate={validate}
@@ -90,6 +100,9 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
             onSubmit={handleFinalFormSubmit}
             render={({ handleSubmit, invalid, pristine }) => (
               <Form onSubmit={handleSubmit} loading={loading}>
+                <Divider horizontal>
+                  <Header as="h3">Create Session</Header>
+                </Divider>
                 <Field
                   name="title"
                   placeholder="Title"
@@ -141,6 +154,57 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                   placeholder="City"
                   value={session.city}
                 />
+
+                <Divider horizontal>
+                  <Header as="h3">Add Schedule</Header>
+                </Divider>
+
+                <Table definition>
+                  <Table.Body>
+                    <Table.Row>
+                      <Table.Cell width={2}>Playtime</Table.Cell>
+                      <Table.Cell>
+                        Activities of choice in open play areas
+                      </Table.Cell>
+                      <Table.Cell>60 min</Table.Cell>
+                    </Table.Row>
+
+                    <Table.Row>
+                      <Table.Cell>Activity </Table.Cell>
+                      <Table.Cell>
+                        Open with warm-up activity or brief group conversation,
+                        review expectations
+                        <Divider horizontal />
+                        <Field
+                          name="description"
+                          placeholder="Description"
+                          value={session.description}
+                          rows={3}
+                          component={TextAreaInput}
+                        />
+                        <Divider horizontal />
+                        Close with reflection time
+                      </Table.Cell>
+                      <Table.Cell>90 min</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell width={2}> Playtime</Table.Cell>
+                      <Table.Cell>
+                        Activities of choice in open play areas
+                      </Table.Cell>
+                      <Table.Cell>60 min</Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </Table>
+                <Item>
+                  <Item.Content>
+                    <Item.Extra>
+                      *Depending on timblock, 30 min lunch takes place at the
+                      beginning, middle or end of the schedule.
+                    </Item.Extra>
+                  </Item.Content>
+                </Item>
+                <Divider horizontal />
 
                 <Button
                   loading={submitting}
