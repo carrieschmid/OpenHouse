@@ -9,6 +9,7 @@ export interface ISession {
   timeblock: string;
   address: string;
   city: string;
+  activity1: string;
   isGoing: boolean;
   isHost: boolean;
   attendees: IAttendee[];
@@ -27,6 +28,8 @@ export class SessionFormValues implements ISessionFormValues {
   timeblock?: string = undefined;
   address: string = "";
   city: string = "";
+  activity1: string = "";
+  activity2: string = "";
 
   constructor(init?: ISessionFormValues) {
     if (init && init.date) {

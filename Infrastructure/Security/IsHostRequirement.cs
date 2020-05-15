@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Persistence;
 
 namespace Infrastructure.Security {
@@ -20,16 +21,20 @@ namespace Infrastructure.Security {
         }
 
         protected override Task HandleRequirementAsync (AuthorizationHandlerContext context, IsHostRequirement requirement) {
-            var currentUserName = _httpContextAccessor.HttpContext.User?.Claims?.SingleOrDefault (x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (context.Resource is AuthorizationFilterContext authContext) {
+                var currentUserName = _httpContextAccessor.HttpContext.User?.Claims?.SingleOrDefault (x => x.Type == ClaimTypes.NameIdentifier)?.Value;
 
-            var sessionId = Guid.Parse (_httpContextAccessor.HttpContext.Request.RouteValues.SingleOrDefault (x => x.Key == "id").Value.ToString ());
+                var activityId = Guid.Parse (authContext.RouteData.Values["id"].ToString ());
 
-            var session = _context.Sessions.FindAsync (sessionId).Result;
+                var activity = _context.Sessions.FindAsync (activityId).Result;
 
-            var host = session.UserSessions.FirstOrDefault (x => x.IsHost);
+                var host = activity.UserSessions.FirstOrDefault (x => x.IsHost);
 
-            if (host?.AppUser?.UserName == currentUserName)
-                context.Succeed (requirement);
+                if (host?.AppUser?.UserName == currentUserName)
+                    context.Succeed (requirement);
+            } else {
+                context.Fail ();
+            }
 
             return Task.CompletedTask;
         }

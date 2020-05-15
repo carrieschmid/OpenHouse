@@ -100,9 +100,28 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
             onSubmit={handleFinalFormSubmit}
             render={({ handleSubmit, invalid, pristine }) => (
               <Form onSubmit={handleSubmit} loading={loading}>
-                <Divider horizontal>
-                  <Header as="h3">Create Session</Header>
-                </Divider>
+                <Button
+                  loading={submitting}
+                  disabled={loading || invalid || pristine}
+                  floated="right"
+                  positive
+                  type="submit"
+                  content="Submit"
+                />
+                <Button
+                  onClick={
+                    session.id
+                      ? () => history.push(`/session${session.id}`)
+                      : () => history.push("/sessions")
+                  }
+                  disabled={loading}
+                  floated="right"
+                  type="button"
+                  content="Cancel"
+                />
+
+                <Header as="h3">Create Session</Header>
+                <Divider horizontal />
                 <Field
                   name="title"
                   placeholder="Title"
@@ -155,9 +174,9 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                   value={session.city}
                 />
 
-                <Divider horizontal>
-                  <Header as="h3">Add Schedule</Header>
-                </Divider>
+                <Divider horizontal />
+                <Header as="h3">Add Schedule</Header>
+                <Divider horizontal />
 
                 <Table definition>
                   <Table.Body>
@@ -166,7 +185,7 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                       <Table.Cell>
                         Activities of choice in open play areas
                       </Table.Cell>
-                      <Table.Cell>60 min</Table.Cell>
+                      <Table.Cell>9am-10am</Table.Cell>
                     </Table.Row>
 
                     <Table.Row>
@@ -176,55 +195,65 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                         review expectations
                         <Divider horizontal />
                         <Field
-                          name="description"
-                          placeholder="Description"
-                          value={session.description}
+                          name="activity1"
+                          placeholder="Description of activity, needed materials, mid-activty snack, etc."
+                          value={session.activity1}
                           rows={3}
                           component={TextAreaInput}
                         />
                         <Divider horizontal />
                         Close with reflection time
                       </Table.Cell>
-                      <Table.Cell>90 min</Table.Cell>
+                      <Table.Cell>10am-11:30am</Table.Cell>
                     </Table.Row>
                     <Table.Row>
                       <Table.Cell width={2}> Playtime</Table.Cell>
                       <Table.Cell>
                         Activities of choice in open play areas
                       </Table.Cell>
-                      <Table.Cell>60 min</Table.Cell>
+                      <Table.Cell>11:30am-12:30pm</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell width={2}> Lunch</Table.Cell>
+                      <Table.Cell>Everybody brings lunch from home</Table.Cell>
+                      <Table.Cell>12:30am-1:30pm</Table.Cell>
                     </Table.Row>
                   </Table.Body>
-                </Table>
-                <Item>
-                  <Item.Content>
-                    <Item.Extra>
-                      *Depending on timblock, 30 min lunch takes place at the
-                      beginning, middle or end of the schedule.
-                    </Item.Extra>
-                  </Item.Content>
-                </Item>
-                <Divider horizontal />
 
-                <Button
-                  loading={submitting}
-                  disabled={loading || invalid || pristine}
-                  floated="right"
-                  positive
-                  type="submit"
-                  content="Submit"
-                />
-                <Button
-                  onClick={
-                    session.id
-                      ? () => history.push(`/session${session.id}`)
-                      : () => history.push("/sessions")
-                  }
-                  disabled={loading}
-                  floated="right"
-                  type="button"
-                  content="Cancel"
-                />
+                  <Table.Row>
+                    <Table.Cell width={2}>Playtime</Table.Cell>
+                    <Table.Cell>
+                      Activities of choice in open play areas
+                    </Table.Cell>
+                    <Table.Cell>1:30pm-2:30pm</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell>Activity </Table.Cell>
+                    <Table.Cell>
+                      Open with warm-up activity or brief group conversation,
+                      review expectations
+                      <Divider horizontal />
+                      <Field
+                        name="activity2"
+                        placeholder="Description of activity, needed materials, mid-activty snack, etc."
+                        value={session.activity2}
+                        rows={3}
+                        component={TextAreaInput}
+                      />
+                      <Divider horizontal />
+                      Close with reflection time
+                    </Table.Cell>
+                    <Table.Cell>2:30pm-4pm</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell width={2}>Playtime</Table.Cell>
+                    <Table.Cell>
+                      Activities of choice in open play areas
+                    </Table.Cell>
+                    <Table.Cell>4pm-5pm</Table.Cell>
+                  </Table.Row>
+                </Table>
+                <Divider horizontal />
               </Form>
             )}
           />

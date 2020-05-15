@@ -57,6 +57,8 @@ namespace Application.Sessions {
                     Timeblock = request.Timeblock,
                     Address = request.Address,
                     City = request.City,
+                    Activity1 = request.Activity1,
+                    Activity2 = request.Activity2
 
                 };
                 _context.Sessions.Add (session);

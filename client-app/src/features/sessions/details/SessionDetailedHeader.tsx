@@ -22,6 +22,7 @@ const sessionImageTextStyle = {
 const SessionDetailedHeader: React.FC<{ session: ISession }> = ({
   session
 }) => {
+  const host = session.attendees.filter((x) => x.isHost)[0];
   const rootStore = useContext(RootStoreContext);
   const { attendSession, cancelAttendance, loading } = rootStore.sessionStore;
   return (
@@ -42,9 +43,13 @@ const SessionDetailedHeader: React.FC<{ session: ISession }> = ({
                   style={{ color: "white" }}
                 />
                 {/* <p>{format(session.date, "eee,  MMM do ")}</p> */}
-                {/* <p>
-                  Hosted by <strong>Bob</strong>
-                </p> */}
+
+                <p>
+                  Hosted by{" "}
+                  <Link to={`/profile/${host.username}`}>
+                    <strong>{host.displayName}</strong>
+                  </Link>
+                </p>
               </Item.Content>
             </Item>
           </Item.Group>

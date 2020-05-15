@@ -6,17 +6,14 @@ import { format } from "date-fns";
 import SessionListItemAttendees from "./SessionListItemAttendees";
 
 const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
-  const host = session.attendees.filter((x) => x.isHost)[0];
+  // const host = session.attendees.filter((x) => x.isHost)[0];
+
   return (
     <Segment.Group>
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image
-              size="tiny"
-              circular
-              // src={host.image || "/assets/user.png"}
-            />
+            {/* <Item.Image size="tiny" circular src={host.image} /> */}
             <Item.Content>
               <Item.Header as={Link} to={`/sessions/${session.id}`}>
                 {session.title}

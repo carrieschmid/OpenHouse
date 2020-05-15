@@ -45,7 +45,7 @@ export default class SessionStore {
       runInAction("loading Sessions", () => {
         sessions.forEach((session) => {
           setSessionProps(session, this.rootStore.userStore.user!);
-          this.session = session;
+          // this.session = session;
           this.sessionRegistry.set(session.id, session);
         });
         this.loadingInitial = false;
@@ -95,10 +95,12 @@ export default class SessionStore {
     this.submitting = true;
     try {
       await agent.Sessions.create(session);
+      console.log(session);
       const attendee = createAttendee(this.rootStore.userStore.user!);
       let attendees = [];
       attendees.push(attendee);
       console.log(attendee);
+
       session.attendees = attendees;
       runInAction("creating session", () => {
         this.sessionRegistry.set(session.id, session);
