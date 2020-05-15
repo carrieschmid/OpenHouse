@@ -3,7 +3,7 @@ import { Item, Label } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import SessionListItem from "./SessionListItem";
 import { RootStoreContext } from "../../../app/stores/rootStore";
-// import format from "date-fns/esm/format";
+import format from "date-fns/esm/format";
 
 const SessionList: React.FC = () => {
   const rootStore = useContext(RootStoreContext);
@@ -12,9 +12,9 @@ const SessionList: React.FC = () => {
     <Fragment>
       {sessionsByDate.map(([group, sessions]) => (
         <Fragment key={group}>
-          <Label size="large" color="blue">
-            {/* {format(group, "eeee, MMMM do ")} */}
-          </Label>
+          {/* <Label size="large" color="blue">
+            {format(group, "eeee, MMMM do")}
+          </Label> */}
           <Item.Group divided>
             {sessions.map((session) => (
               <SessionListItem key={session.id} session={session} />

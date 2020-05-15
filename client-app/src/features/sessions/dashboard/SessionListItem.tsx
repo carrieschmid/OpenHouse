@@ -22,7 +22,7 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
                 {session.title}
               </Item.Header>
 
-              {/* <Item.Meta>{format(session., "eeee do MMMM")}</Item.Meta> */}
+              <Item.Meta>{format(session.date, "eeee, MMMM do")}</Item.Meta>
               {/* <Item.Description> Hosted by {host.displayName}</Item.Description> */}
               <Item.Description>
                 <span>{session.description}</span>
@@ -50,7 +50,8 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
         </Item.Group>
       </Segment>
       <Segment>
-        <Icon name="clock" /> {format(session.date, "h:mm a")}
+        {/* <Icon name="clock" /> */}
+        {/* {format(session.date, "eeee, MMMM do ")} */}
         <Icon name="marker" /> {session.address}, {session.city}
       </Segment>
       <Segment secondary>

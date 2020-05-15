@@ -26,17 +26,14 @@ export const HomePage: React.FC = () => {
       <Container text>
         <Fragment>
           <Grid>
-            {/* <Grid.Row> */}
             <Grid.Column width={10}></Grid.Column>
             <Image
               size="medium"
               src="/assets/leoandmaisie.jpg"
               alt="Leo and Maisie"
-              width="500"
               style={{ marginBottom: 12 }}
             />
-            {/* </Grid.Row> */}
-            {/* <Grid.Row> */}
+
             <Grid.Column width={2}>
               <Image
                 // size="massive"
@@ -54,11 +51,10 @@ export const HomePage: React.FC = () => {
                   community that effectively and efficiently supports young
                   learners. OpenHouse provides a structure to connect and
                   organize families to share their resources and time with each
-                  other. Learn more about this unqiue community.
+                  other. Learn more about this unique community.
                 </Header>
               </Fragment>
             </Grid.Column>
-            {/* </Grid.Row> */}
           </Grid>
         </Fragment>
       </Container>
