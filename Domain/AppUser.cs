@@ -7,6 +7,8 @@ namespace Domain {
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+
+        public string Bio { get; set; }
         public string Interests { get; set; }
         public string BgCheck { get; set; }
         public string FirstAid { get; set; }
@@ -16,5 +18,7 @@ namespace Domain {
 
         public virtual ICollection<UserSession> UserSessions { get; set; }
         public virtual ICollection<UserKid> UserKids { get; set; }
+
+        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

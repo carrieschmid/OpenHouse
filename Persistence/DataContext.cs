@@ -16,6 +16,7 @@ namespace Persistence {
 
         public DbSet<UserSession> UserSessions { get; set; }
         public DbSet<UserKid> UserKids { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating (ModelBuilder builder) {
             base.OnModelCreating (builder);
