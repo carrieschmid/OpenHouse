@@ -44,12 +44,12 @@ const SessionDetailedHeader: React.FC<{ session: ISession }> = ({
                 />
                 {/* <p>{format(session.date, "eee,  MMM do ")}</p> */}
 
-                <p>
+                {/* <p>
                   Hosted by{" "}
                   <Link to={`/profile/${host.username}`}>
                     <strong>{host.displayName}</strong>
                   </Link>
-                </p>
+                </p> */}
               </Item.Content>
             </Item>
           </Item.Group>
