@@ -14,7 +14,8 @@ export default class SessionStore {
   }
   @observable sessionRegistry = new Map();
   @observable session: ISession | null = null;
-  @observable loadingInitial = false;
+  @observable loadingInitial = true;
+  //changed this from false to true
   @observable submitting = false;
   @observable target = "";
   @observable loading = false;
