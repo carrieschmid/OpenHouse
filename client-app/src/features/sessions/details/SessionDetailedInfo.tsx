@@ -20,10 +20,10 @@ const SessionDetailedInfo: React.FC<{ session: ISession }> = ({ session }) => {
         <Segment attached>
           <Grid verticalAlign="middle">
             <Grid.Column width={1}>
-              <Icon name="calendar" size="large" color="teal" />
+              <Icon name="clock" size="large" color="teal" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>{format(session.date, "eeee do MMMM")},</span>
+              {/* <span>{format(session.date, "eeee do MMMM")},</span> */}
 
               {session.timeblock}
               {/* {format(session.date!, "h h")} */}

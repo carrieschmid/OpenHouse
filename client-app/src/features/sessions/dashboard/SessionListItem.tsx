@@ -13,14 +13,19 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
       <Segment>
         <Item.Group>
           <Item>
-            {/* <Item.Image size="tiny" circular src={host.image} /> */}
+            {/* <Item.Image
+              size="tiny"
+              circular
+              src={host.image}
+              style={{ marginBottom: 3 }}
+            /> */}
             <Item.Content>
               <Item.Header as={Link} to={`/sessions/${session.id}`}>
                 {session.title}
               </Item.Header>
 
               <Item.Meta>{format(session.date, "eeee, MMMM do")}</Item.Meta>
-              {/* <Item.Description> Hosted by {host.displayName}</Item.Description> */}
+              {/* <Item.Description> Hosted by <Link to={`/profile/${hot.username}`>{host.displayName}</Link></Item.Description> */}
               <Item.Description>
                 <span>{session.description}</span>
               </Item.Description>
