@@ -29,8 +29,8 @@ const SessionDetailedInfo: React.FC<{ session: ISession }> = ({ session }) => {
             <Grid.Column width={15}>
               <span>
                 {format(session.date, "eeee do MMMM")}
-                {/* at{" "} */}
-                {/* {format(session.date!, "h:mm a")} */}
+
+                {format(session.date!, "h:mm a")}
               </span>
             </Grid.Column>
           </Grid>
