@@ -6,6 +6,7 @@ export interface ISession {
   description: string;
   category: string;
   date: Date;
+  time: Date;
   timeblock: string;
   address: string;
   city: string;
@@ -25,7 +26,8 @@ export class SessionFormValues implements ISessionFormValues {
   category: string = "";
   description: string = "";
   date?: Date = undefined;
-  timeblock?: string = undefined;
+  time?: Date = undefined;
+  timeblock: string = "";
   address: string = "";
   city: string = "";
   activity1: string = "";

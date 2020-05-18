@@ -13,11 +13,7 @@ const SessionDetailedInfo: React.FC<{ session: ISession }> = ({ session }) => {
               <Icon size="large" color="teal" name="info" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>
-                {session.description}
-                {/* at */}
-                {/* {format(session.date, "h:mm a")} */}
-              </span>
+              <span>{session.description}</span>
             </Grid.Column>
           </Grid>
         </Segment>
@@ -27,11 +23,10 @@ const SessionDetailedInfo: React.FC<{ session: ISession }> = ({ session }) => {
               <Icon name="calendar" size="large" color="teal" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>
-                {format(session.date, "eeee do MMMM")}
+              <span>{format(session.date, "eeee do MMMM")},</span>
 
-                {format(session.date!, "h:mm a")}
-              </span>
+              {session.timeblock}
+              {/* {format(session.date!, "h h")} */}
             </Grid.Column>
           </Grid>
         </Segment>

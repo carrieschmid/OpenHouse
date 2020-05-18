@@ -47,8 +47,9 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
         </Item.Group>
       </Segment>
       <Segment>
-        {/* <Icon name="clock" /> */}
         {/* {format(session.date, "eeee, MMMM do ")} */}
+        <Icon name="clock" />
+        {session.timeblock}
         <Icon name="marker" /> {session.address}, {session.city}
       </Segment>
       <Segment secondary>

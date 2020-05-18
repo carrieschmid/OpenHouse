@@ -45,12 +45,12 @@ export default class SessionStore {
       runInAction("loading Sessions", () => {
         sessions.forEach((session) => {
           setSessionProps(session, this.rootStore.userStore.user!);
-          // this.session = session;
+          this.session = session;
           this.sessionRegistry.set(session.id, session);
         });
         this.loadingInitial = false;
       });
-      // console.log(this.groupsessionsByDate(sessions));
+      console.log(this.groupSessionsByDate(sessions));
     } catch (error) {
       runInAction("load sessions error", () => {
         this.loadingInitial = false;
