@@ -2,6 +2,10 @@ export interface IProfile {
   displayName: string;
   username: string;
   bio: string;
+  interests: string;
+  bgcheck: string;
+  firstaid: string;
+  terms: string;
   image: string;
   photos: IPhoto[];
 }
