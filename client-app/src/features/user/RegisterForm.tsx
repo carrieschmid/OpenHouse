@@ -60,30 +60,7 @@ const RegisterForm = () => {
           <Field name="address" component={TextInput} placeholder="Address" />
           <Field name="city" component={TextInput} placeholder="City" />
           <Field name="state" component={TextInput} placeholder="State" />
-          <Field
-            name="interests"
-            component={SelectInput}
-            placeholder="Interests"
-            type="interests"
-          />
-          <Field
-            name="bgcheck"
-            component={SelectInput}
-            placeholder="Background Check"
-            type="phone"
-          />
-          <Field
-            name="firstaid"
-            component={SelectInput}
-            placeholder="First Aid"
-            type="firstaid"
-          />
-          <Field
-            name="terms"
-            component={SelectInput}
-            placeholder="Terms of Agreement"
-            type="terms"
-          />
+
           {submitError && !dirtySinceLastSubmit && (
             <ErrorMessage error={submitError} />
           )}
