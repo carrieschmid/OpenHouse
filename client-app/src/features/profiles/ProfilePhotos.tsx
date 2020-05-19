@@ -14,7 +14,7 @@ const ProfilePhotos = () => {
     uploadPhoto,
     uploadingPhoto,
     setMainPhoto,
-    // deletePhoto,
+    deletePhoto,
     loading
   } = rootStore.profileStore;
   const [addPhotoMode, setAddPhotoMode] = useState(true);
@@ -67,7 +67,7 @@ const ProfilePhotos = () => {
                           positive
                           content="Main"
                         />
-                        {/* <Button
+                        <Button
                           name={photo.id}
                           disabled={photo.isMain}
                           onClick={(e) => {
@@ -78,7 +78,7 @@ const ProfilePhotos = () => {
                           basic
                           negative
                           icon="trash"
-                        /> */}
+                        />
                       </Button.Group>
                     )}
                   </Card>
