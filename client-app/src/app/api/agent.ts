@@ -4,6 +4,7 @@ import { history } from "../..";
 import { toast } from "react-toastify";
 import { IUser, IUserFormValues } from "../models/user";
 import { IProfile, IPhoto } from "../models/profile";
+import { IKid } from "../models/kid";
 import { request } from "https";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
@@ -109,8 +110,14 @@ const Profiles = {
     requests.put(`/profiles`, profile)
 };
 
+const Kids = {
+  getKid: (username: string): Promise<IKid> =>
+    requests.get(`/${username}/kids`),
+  addKid: (username: string): Promise<IKid> => requests.get(`/${username}/kids`)
+};
 export default {
   Sessions,
   User,
-  Profiles
+  Profiles,
+  Kids
 };

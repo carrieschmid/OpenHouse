@@ -22,7 +22,9 @@ namespace Application.Kids {
 
         public class Handler : IRequestHandler<Command> {
             private readonly DataContext _context;
-            public Handler (DataContext context) {
+            private readonly IUserAccessor _userAccessor;
+            public Handler (DataContext context, IUserAccessor userAccessor) {
+                _userAccessor = userAccessor;
                 _context = context;
             }
 
@@ -39,6 +41,16 @@ namespace Application.Kids {
 
                     };
                     _context.Kids.Add (kid);
+
+                    var user = await _context.Users.SingleOrDefaultAsync (x => x.UserName == _userAccessor.GetCurrentUsername ());
+
+                    var userkid = new UserKid {
+                        AppUser = user,
+                        Kid = kid,
+
+                    };
+
+                    _context.UserKids.Add (userkid);
 
                     var success = await
                     _context.SaveChangesAsync () > 0;
