@@ -11,6 +11,7 @@ export interface ISession {
   address: string;
   city: string;
   activity1: string;
+  activity2: string;
   isGoing: boolean;
   isHost: boolean;
   attendees: IAttendee[];

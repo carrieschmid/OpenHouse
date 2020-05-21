@@ -8,6 +8,3 @@ publish
 settings.json
 appsettings.json
 .idea
-node_modules
-.txt
-.env

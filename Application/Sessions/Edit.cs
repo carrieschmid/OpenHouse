@@ -18,6 +18,10 @@ namespace Application.Sessions {
             public string Address { get; set; }
             public string City { get; set; }
 
+            public string Activity1 { get; set; }
+
+            public string Activity2 { get; set; }
+
         }
 
         public class Handler : IRequestHandler<Command> {
@@ -41,6 +45,8 @@ namespace Application.Sessions {
                 session.Timeblock = request.Timeblock ?? session.Timeblock;
                 session.Address = request.Address ?? session.Address;
                 session.City = request.City ?? session.City;
+                session.Activity1 = request.Activity1 ?? session.Activity1;
+                session.Activity2 = request.Activity2 ?? session.Activity2;
 
                 var success = await
                 _context.SaveChangesAsync () > 0;

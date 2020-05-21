@@ -5,7 +5,8 @@ import { RouteComponentProps } from "react-router";
 import { LoadingComponent } from "../../../app/layout/LoadingComponent";
 import SessionDetailedHeader from "./SessionDetailedHeader";
 import SessionDetailedInfo from "./SessionDetailedInfo";
-import SessionDetailedChat from "./SessionDetailedChat";
+import SessionLesson from "./SessionLesson";
+// import SessionDetailedChat from "./SessionDetailedChat";
 import SessionDetailedSidebar from "./SessionDetailedSidebar";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 interface DetailParams {
@@ -32,7 +33,8 @@ const SessionDetails: React.FC<RouteComponentProps<DetailParams>> = ({
       <Grid.Column width={10}>
         <SessionDetailedHeader session={session} />
         <SessionDetailedInfo session={session} />
-        <SessionDetailedChat />
+        {/* <SessionDetailedChat /> */}
+        <SessionLesson session={session} />
       </Grid.Column>
       <Grid.Column width={6}>
         <SessionDetailedSidebar attendees={session.attendees} />
