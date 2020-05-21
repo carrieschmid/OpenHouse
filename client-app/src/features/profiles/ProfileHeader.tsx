@@ -34,7 +34,7 @@ const ProfileHeader: React.FC<IProps> = ({ profile }) => {
             </Item>
           </Item.Group>
         </Grid.Column>
-        <Grid.Column width={4}>
+        {/* <Grid.Column width={4}>
           <Statistic.Group widths={2}>
             <Statistic label="Followers" value="5" />
             <Statistic label="Following" value="42" />
@@ -53,7 +53,7 @@ const ProfileHeader: React.FC<IProps> = ({ profile }) => {
               />
             </Reveal.Content>
           </Reveal>
-        </Grid.Column>
+        </Grid.Column> */}
       </Grid>
     </Segment>
   );

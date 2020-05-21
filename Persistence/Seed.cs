@@ -150,7 +150,7 @@ namespace Persistence {
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
                     Activity1 = "Learn about urban forestry.",
-                    Activity2 = "Go for a hike."
+                    Activity2 = "Go for a hike.",
                     UserSessions = new List<UserSession> {
                     new UserSession {
                     AppUserId = "b",
@@ -159,7 +159,7 @@ namespace Persistence {
                     },
                     },
 
-                    // },
+                    },
                     // new Session {
                     // Title = "Future Activity 4",
                     // Date = DateTime.Now.AddMonths (4),
@@ -173,16 +173,16 @@ namespace Persistence {
 
                     // }
 
-                    };
+                };
 
-                    context.Sessions.AddRange (sessions);
-                    context.SaveChanges ();
-                    //this is probably where the delete data methods would go
-                    // var context = new SampleContext ();
-                    // var author = new Author { AuthorId = 1 };
-                    // context.Entry (author).State = EntityState.Deleted;
-                    // context.SaveChanges ();
-                }
+                context.Sessions.AddRange (sessions);
+                context.SaveChanges ();
+                //this is probably where the delete data methods would go
+                // var context = new SampleContext ();
+                // var author = new Author { AuthorId = 1 };
+                // context.Entry (author).State = EntityState.Deleted;
+                // context.SaveChanges ();
             }
         }
     }
+}

@@ -3,8 +3,8 @@ export const category = [
   { key: "sports", text: "Sports", value: "sports" },
   { key: "nature", text: "Nature", value: "nature" },
   {
-    key: "languageandlogic",
-    text: "Language and Logic",
-    value: "languageandlogic"
+    key: "languagearts",
+    text: "Language Arts",
+    value: "languagearts"
   }
 ];

@@ -35,9 +35,6 @@ const ProfileDescription = () => {
             <span>{profile!.bio}</span>
           )}
         </Grid.Column>
-        <Grid.Column width={16}>
-          <h1>kids</h1>
-        </Grid.Column>
       </Grid>
     </Tab.Pane>
   );

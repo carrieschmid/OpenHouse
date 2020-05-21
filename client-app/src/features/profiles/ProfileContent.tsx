@@ -19,19 +19,19 @@ const panes = [
         <ProfilePhotos />
       </Tab.Pane>
     )
-  },
-  {
-    menuItem: "Activities",
-    render: () => <Tab.Pane>Activities content</Tab.Pane>
-  },
-  {
-    menuItem: "Followers",
-    render: () => <Tab.Pane>Followers content</Tab.Pane>
-  },
-  {
-    menuItem: "Following",
-    render: () => <Tab.Pane>Following content</Tab.Pane>
   }
+  // {
+  //   menuItem: "Activities",
+  //   render: () => <Tab.Pane>Activities content</Tab.Pane>
+  // },
+  // {
+  //   menuItem: "Followers",
+  //   render: () => <Tab.Pane>Followers content</Tab.Pane>
+  // },
+  // {
+  //   menuItem: "Following",
+  //   render: () => <Tab.Pane>Following content</Tab.Pane>
+  // }
 ];
 
 const ProfileContent = () => {

@@ -1,10 +1,9 @@
 import React, { useContext, Fragment } from "react";
 import { Menu, Container, Button, Dropdown, Image } from "semantic-ui-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RootStoreContext } from "../../app/stores/rootStore";
 import LoginForm from "../user/LoginForm";
 import RegisterForm from "../user/RegisterForm";
-import { observer } from "mobx-react-lite";
 
 const NavBar = () => {
   const rootStore = useContext(RootStoreContext);
@@ -22,7 +21,7 @@ const NavBar = () => {
           />
         </Menu.Item>
         <Menu.Item name="Sessions" as={Link} to="/sessions" />
-        <Menu.Item name="Members" />
+        {/* <Menu.Item name="Members" /> */}
 
         {user ? (
           <Menu.Item position="right">

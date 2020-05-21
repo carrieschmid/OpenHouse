@@ -14,7 +14,6 @@ import SessionForm from "../../features/sessions/form/SessionForm";
 import LoginForm from "../../features/user/LoginForm";
 import SessionDetails from "../../features/sessions/details/SessionDetails";
 import { ToastContainer } from "react-toastify";
-//Toast not working, looking at section 133
 import NotFound from "./NotFound";
 import { RootStoreContext } from "../stores/rootStore";
 import { LoadingComponent } from "./LoadingComponent";
@@ -55,8 +54,6 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
           <Fragment>
             <Container style={{ marginTop: "7em" }}>
               <Switch>
-                {/* <Switch /> component will only render the first route that matches/includes the path. Once it finds the first route that matches the path, it will not look for any other matches. Not only that, it allows for nested routes to work properly, which is something that <Router /> will not be able to handle. */}
-
                 <PrivateRoute
                   exact
                   path="/sessions"
