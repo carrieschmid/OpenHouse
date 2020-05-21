@@ -5,7 +5,7 @@ import { ISession } from "../../../app/models/session";
 const SessionLesson: React.FC<{ session: ISession }> = ({ session }) => {
   return (
     <div>
-      <h2> Session Schedule</h2>
+      <h2 style={{ marginTop: 25 }}> Session Schedule </h2>
       <Segment.Group attached="top">
         <Segment>
           <Grid>

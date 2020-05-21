@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router";
 import { LoadingComponent } from "../../../app/layout/LoadingComponent";
@@ -29,17 +29,21 @@ const SessionDetails: React.FC<RouteComponentProps<DetailParams>> = ({
   if (!session) return <h2> Not found</h2>;
 
   return (
-    <Grid>
-      <Grid.Column width={10}>
-        <SessionDetailedHeader session={session} />
-        <SessionDetailedInfo session={session} />
-        {/* <SessionDetailedChat /> */}
-        <SessionLesson session={session} />
-      </Grid.Column>
-      <Grid.Column width={6}>
-        <SessionDetailedSidebar attendees={session.attendees} />
-      </Grid.Column>
-    </Grid>
+    <Segment.Group>
+      <Segment>
+        <Grid>
+          <Grid.Column width={10}>
+            <SessionDetailedHeader session={session} />
+            <SessionDetailedInfo session={session} />
+            {/* <SessionDetailedChat /> */}
+            <SessionLesson session={session} />
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <SessionDetailedSidebar attendees={session.attendees} />
+          </Grid.Column>
+        </Grid>
+      </Segment>
+    </Segment.Group>
   );
 };
 

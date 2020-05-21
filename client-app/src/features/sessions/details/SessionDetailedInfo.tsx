@@ -6,6 +6,7 @@ import { format } from "date-fns/esm";
 const SessionDetailedInfo: React.FC<{ session: ISession }> = ({ session }) => {
   return (
     <div>
+      <h2> Session Details</h2>
       <Segment.Group>
         <Segment attached="top">
           <Grid>
