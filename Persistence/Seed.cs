@@ -72,31 +72,31 @@ namespace Persistence {
             if (!context.Sessions.Any ()) {
                 var sessions = new List<Session> {
                     new Session {
-                    Title = "Past Session 1",
+                    Title = "Inside Out Fun",
                     Date = DateTime.Now.AddMonths (-2),
                     Timeblock = "9am - 1pm",
-                    Description = "Session 2 months ago",
-                    Category = "Math",
+                    Description = "Sidewalk paint, sculpture soap, crea a climb-through greeting card and more.",
+                    Category = "Arts and Crafts",
                     Address = "2915 NE Jarrett St",
                     City = "Portland",
+                    Activity1 = "Sidewalk Painting: Mix baking soda, cornstarch, and warm (nearly hot) water in a container. Add water until you get to the desired consistency. Add food coloring.After the painting is done, put vinegar into the spray bottle and spray the paint. It will foam and fizzle like magic! Paint may be stored in a sealed container.",
                     UserSessions = new List<UserSession> {
                     new UserSession {
-                    AppUserId = "a",
+                    AppUserId = "b",
                     IsHost = true,
                     DateJoined = DateTime.Now.AddMonths (2)
                     },
                     }
                     },
                     new Session {
-                    Title = "Past Activity 2",
+                    Title = "The Moon",
                     Date = DateTime.Now.AddMonths (-1),
                     Timeblock = "1pm - 5pm",
-                    Description = "Session 1 months ago",
-                    Category = "Art",
+                    Description = "Learn about the phases of the moon with stories and art.",
+                    Category = "Science",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
-                    Activity1 = "Paint",
-                    Activity2 = "Paint",
+                    Activity2 = "Moon story, moon crater art project, video about moon phases, make moon sand",
                     UserSessions = new List<UserSession> {
                     new UserSession {
                     AppUserId = "a",
@@ -106,64 +106,83 @@ namespace Persistence {
                     },
                     },
                     new Session {
-                    Title = "Future Activity 1",
+                    Title = "Write a Screenplay",
                     Date = DateTime.Now.AddMonths (1),
                     Timeblock = "9am - 5pm",
-                    Description = "Language arts activity",
+                    Description = "Learn about the parts of a screenplay, write it and create a short movie.",
                     Category = "Language",
-                    Address = "1503 NE Schuyler St",
+                    Address = "1544 NE 34th St",
                     City = "Portland",
-                    Activity1 = "Paint",
-                    Activity2 = "Paint"
-
+                    Activity1 = "Choose a story to turn into a screenplay. Describe how to write a scene. Write them in pairs.",
+                    Activity2 = "Learn about 'the montage' and 'the intercut'. Film the scenes ",
+                    UserSessions = new List<UserSession> {
+                    new UserSession {
+                    AppUserId = "c",
+                    IsHost = true,
+                    DateJoined = DateTime.Now.AddMonths (2)
+                    },
+                    },
                     },
                     new Session {
-                    Title = "Future Activity 2",
+                    Title = "Budgeting 101",
                     Date = DateTime.Now.AddMonths (2),
                     Timeblock = "9am - 1m",
-                    Description = "Session 1 months ago",
-                    Category = "Science",
+                    Description = "Learn the value of a quarter, nickle and dime. Set up a store and learn to spend your money wisely.",
+                    Category = "Math",
                     Address = "2915 NE Jarrett St.",
                     City = "Portland",
-                    Activity1 = "Paint",
-                    Activity2 = "Paint"
+                    Activity1 = "Count the coins, store set up, shopping activity.",
+                    UserSessions = new List<UserSession> {
+                    new UserSession {
+                    AppUserId = "b",
+                    IsHost = true,
+                    DateJoined = DateTime.Now.AddMonths (2)
+                    },
+                    },
 
                     },
                     new Session {
-                    Title = "Future Activity 3",
+                    Title = "Forest Park Hike",
                     Date = DateTime.Now.AddMonths (3),
-                    Timeblock = "1pm - 5pm",
-                    Description = "Baking pies",
-                    Category = "Craft",
+                    Timeblock = "9am - 5pm",
+                    Description = "Explore the beauty of our urban forest.",
+                    Category = "Nature",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
-                    Activity1 = "Paint",
-                    Activity2 = "Paint"
-
+                    Activity1 = "Learn about urban forestry.",
+                    Activity2 = "Go for a hike."
+                    UserSessions = new List<UserSession> {
+                    new UserSession {
+                    AppUserId = "b",
+                    IsHost = true,
+                    DateJoined = DateTime.Now.AddMonths (2)
                     },
-                    new Session {
-                    Title = "Future Activity 4",
-                    Date = DateTime.Now.AddMonths (4),
-                    Timeblock = "1pm - 5pm",
-                    Description = "Baking pies",
-                    Category = "Craft",
-                    Address = "1503 NE Schuyler St",
-                    City = "Portland",
-                    Activity1 = "Paint",
-                    Activity2 = "Paint"
+                    },
 
-                    }
+                    // },
+                    // new Session {
+                    // Title = "Future Activity 4",
+                    // Date = DateTime.Now.AddMonths (4),
+                    // Timeblock = "1pm - 5pm",
+                    // Description = "Baking pies",
+                    // Category = "Craft",
+                    // Address = "1503 NE Schuyler St",
+                    // City = "Portland",
+                    // Activity1 = "Paint",
+                    // Activity2 = "Paint"
 
-                };
+                    // }
 
-                context.Sessions.AddRange (sessions);
-                context.SaveChanges ();
-                //this is probably where the delete data methods would go
-                // var context = new SampleContext ();
-                // var author = new Author { AuthorId = 1 };
-                // context.Entry (author).State = EntityState.Deleted;
-                // context.SaveChanges ();
+                    };
+
+                    context.Sessions.AddRange (sessions);
+                    context.SaveChanges ();
+                    //this is probably where the delete data methods would go
+                    // var context = new SampleContext ();
+                    // var author = new Author { AuthorId = 1 };
+                    // context.Entry (author).State = EntityState.Deleted;
+                    // context.SaveChanges ();
+                }
             }
         }
     }
-}

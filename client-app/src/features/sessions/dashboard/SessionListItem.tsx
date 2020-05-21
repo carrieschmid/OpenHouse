@@ -58,7 +58,7 @@ const SessionListItem: React.FC<{ session: ISession }> = ({ session }) => {
         <Icon name="marker" /> {session.address}, {session.city}
       </Segment>
       <Segment secondary>
-        <SessionListItemAttendees attendees={session.attendees} />>
+        <SessionListItemAttendees attendees={session.attendees} />
       </Segment>
       <Segment clearing>
         <Button

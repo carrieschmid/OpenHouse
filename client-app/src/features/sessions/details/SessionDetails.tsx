@@ -6,7 +6,7 @@ import { LoadingComponent } from "../../../app/layout/LoadingComponent";
 import SessionDetailedHeader from "./SessionDetailedHeader";
 import SessionDetailedInfo from "./SessionDetailedInfo";
 import SessionLesson from "./SessionLesson";
-// import SessionDetailedChat from "./SessionDetailedChat";
+import SessionDetailedChat from "./SessionDetailedChat";
 import SessionDetailedSidebar from "./SessionDetailedSidebar";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 interface DetailParams {
@@ -35,8 +35,12 @@ const SessionDetails: React.FC<RouteComponentProps<DetailParams>> = ({
           <Grid.Column width={10}>
             <SessionDetailedHeader session={session} />
             <SessionDetailedInfo session={session} />
-            {/* <SessionDetailedChat /> */}
-            <SessionLesson session={session} />
+
+            {session.isHost ? (
+              <SessionLesson session={session} />
+            ) : (
+              <SessionDetailedChat />
+            )}
           </Grid.Column>
           <Grid.Column width={6}>
             <SessionDetailedSidebar attendees={session.attendees} />
