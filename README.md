@@ -2,7 +2,7 @@
 
 #### _Volunteers teachers can register as volunteers, login to schedule and make a weekly lesson plan. Parents can register their kids for sessions._
 
-#### 12/19/2019
+#### 5/21/2020
 
 #### By _**Carrie Schmid**_
 
