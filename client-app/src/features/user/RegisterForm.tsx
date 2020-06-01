@@ -10,10 +10,10 @@ import ErrorMessage from "../../app/common/form/ErrorMessage";
 import { isRequired, combineValidators } from "revalidate";
 
 const validate = combineValidators({
-  username: isRequired("username"),
-  displayName: isRequired("display name"),
-  email: isRequired("email"),
-  password: isRequired("password")
+  username: isRequired("Username"),
+  displayName: isRequired("DisplayName"),
+  email: isRequired("Email"),
+  password: isRequired("Password")
 });
 
 const RegisterForm = () => {

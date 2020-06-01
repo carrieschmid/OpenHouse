@@ -11,7 +11,11 @@ const NavBar = () => {
   // const { isLoggedIn, user } = rootStore.userStore;
   const { openModal } = rootStore.modalStore;
   return (
-    <Menu fixed="top" style={{ marginBottom: 200 }} inverted>
+    <Menu
+      fixed="top"
+      style={{ marginBottom: 200 }}
+      // inverted
+    >
       <Container>
         <Menu.Item name="Homepage" as={Link} to="/">
           <img
@@ -48,7 +52,7 @@ const NavBar = () => {
               position="right"
               onClick={() => openModal(<LoginForm />)}
               size="huge"
-              inverted
+              // inverted
             >
               Login
             </Menu.Item>
@@ -56,7 +60,7 @@ const NavBar = () => {
               onClick={() => openModal(<RegisterForm />)}
               to="/register"
               size="huge"
-              inverted
+              // inverted
             >
               Register
             </Menu.Item>
