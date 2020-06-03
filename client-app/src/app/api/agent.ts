@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { ISession } from "../models/session";
+import { ISession, ISessionsEnvelope } from "../models/session";
 import { history } from "../..";
 import { toast } from "react-toastify";
 import { IUser, IUserFormValues } from "../models/user";
@@ -81,7 +81,8 @@ const requests = {
 };
 
 const Sessions = {
-  list: (): Promise<ISession[]> => requests.get("/sessions"),
+  list: (limit?: number, page?: number): Promise<ISessionsEnvelope> =>
+    requests.get(`/sessions?limit=${limit}&offset=${page ? page * limit! : 0}`),
   details: (id: string) => requests.get(`/sessions/${id}`),
   create: (session: ISession) => requests.post("/sessions", session),
   update: (session: ISession) =>

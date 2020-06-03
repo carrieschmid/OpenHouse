@@ -13,8 +13,8 @@ namespace API.Controllers {
     public class SessionsController : BaseController {
 
         [HttpGet]
-        public async Task<ActionResult<List<SessionDto>>> List () {
-            return await Mediator.Send (new List.Query ());
+        public async Task<ActionResult<List.SessionsEnvelope>> List (int? limit, int? offset) {
+            return await Mediator.Send (new List.Query (limit, offset));
         }
 
         [HttpGet ("{id}")]

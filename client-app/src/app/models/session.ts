@@ -1,4 +1,8 @@
 // import { string } from "prop-types";
+export interface ISessionsEnvelope {
+  sessions: ISession[];
+  sessionCount: number;
+}
 
 export interface ISession {
   id: string;

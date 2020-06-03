@@ -12,6 +12,8 @@ import {
   LogLevel
 } from "@microsoft/signalr";
 
+const LIMIT = 2;
+
 export default class SessionStore {
   rootStore: RootStore;
   constructor(rootStore: RootStore) {
@@ -25,6 +27,16 @@ export default class SessionStore {
   @observable target = "";
   @observable loading = false;
   @observable.ref hubConnection: HubConnection | null = null;
+  @observable sessionCount = 0;
+  @observable page = 0;
+
+  @computed get totalPages() {
+    return Math.ceil(this.sessionCount / LIMIT);
+  }
+
+  @action setPage = (page: number) => {
+    this.page = page;
+  };
 
   @action createHubConnection = (sessionId: string) => {
     this.hubConnection = new HubConnectionBuilder()
@@ -96,13 +108,15 @@ export default class SessionStore {
   @action loadSessions = async () => {
     this.loadingInitial = true;
     try {
-      const sessions = await agent.Sessions.list();
+      const sessionsEnvelope = await agent.Sessions.list(LIMIT, this.page);
+      const { sessions, sessionCount } = sessionsEnvelope;
       runInAction("loading Sessions", () => {
         sessions.forEach((session) => {
           setSessionProps(session, this.rootStore.userStore.user!);
           this.session = session;
           this.sessionRegistry.set(session.id, session);
         });
+        this.sessionCount = sessionCount;
         this.loadingInitial = false;
       });
       console.log(this.groupSessionsByDate(sessions));
