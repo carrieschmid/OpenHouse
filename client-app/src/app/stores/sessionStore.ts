@@ -26,7 +26,7 @@ export default class SessionStore {
   @observable loading = false;
   @observable.ref hubConnection: HubConnection | null = null;
 
-  @action createHubConnection = () => {
+  @action createHubConnection = (sessionId: string) => {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl("http://localhost:5000/chat", {
         accessTokenFactory: () => this.rootStore.commonStore.token!
@@ -37,6 +37,10 @@ export default class SessionStore {
     this.hubConnection
       .start()
       .then(() => console.log(this.hubConnection!.state))
+      // .then(() => {
+      //   console.log("Attempting to join group.");
+      //   this.hubConnection!.invoke("AddToGroup", sessionId);
+      // })
       .catch((error) => console.log("Error establising connection: ", error));
 
     this.hubConnection.on("ReceiveComment", (comment) => {
@@ -44,10 +48,18 @@ export default class SessionStore {
         this.session!.comments.push(comment);
       });
     });
+    // this.hubConnection.on("Send", (message) => {
+    //   toast.info(message);
+    // });
   };
 
   @action stopHubConnection = () => {
-    this.hubConnection!.stop();
+    this.hubConnection!.invoke("RemoveFromGroup", this.session!.id)
+      .then(() => {
+        this.hubConnection!.stop();
+      })
+      .then(() => console.log("Connection stopped"))
+      .catch((err) => console.log(err));
   };
 
   @action addComment = async (values: any) => {
@@ -142,9 +154,8 @@ export default class SessionStore {
       const attendee = createAttendee(this.rootStore.userStore.user!);
       let attendees = [];
       attendees.push(attendee);
-      console.log(attendee);
-
       session.attendees = attendees;
+      session.comments = [];
       runInAction("creating session", () => {
         this.sessionRegistry.set(session.id, session);
         this.submitting = false;

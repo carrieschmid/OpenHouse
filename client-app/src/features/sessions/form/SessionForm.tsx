@@ -120,7 +120,7 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                   content="Cancel"
                 />
 
-                <Header as="h3">Create Session</Header>
+                <Header as="h3">Edit Session</Header>
                 <Divider horizontal />
                 <Field
                   name="title"
@@ -181,7 +181,7 @@ const SessionForm: React.FC<RouteComponentProps<DetailParams>> = ({
                 />
 
                 <Divider horizontal />
-                <Header as="h3">Add Schedule</Header>
+                <Header as="h3">Edit Schedule</Header>
                 <Divider horizontal />
 
                 <Table definition>

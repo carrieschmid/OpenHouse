@@ -35,12 +35,7 @@ const SessionDetails: React.FC<RouteComponentProps<DetailParams>> = ({
           <Grid.Column width={10}>
             <SessionDetailedHeader session={session} />
             <SessionDetailedInfo session={session} />
-
-            {session.isHost ? (
-              <SessionLesson session={session} />
-            ) : (
-              <SessionDetailedChat />
-            )}
+            <SessionDetailedChat />
           </Grid.Column>
           <Grid.Column width={6}>
             <SessionDetailedSidebar attendees={session.attendees} />

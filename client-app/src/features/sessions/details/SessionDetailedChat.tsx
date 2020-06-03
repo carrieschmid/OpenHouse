@@ -17,11 +17,11 @@ const SessionDetailedChat = () => {
   } = rootStore.sessionStore;
 
   useEffect(() => {
-    createHubConnection();
+    createHubConnection(session!.id);
     return () => {
       stopHubConnection();
     };
-  }, [createHubConnection, stopHubConnection]);
+  }, [createHubConnection, stopHubConnection, session]);
 
   return (
     <Fragment>
