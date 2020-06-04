@@ -81,8 +81,11 @@ const requests = {
 };
 
 const Sessions = {
-  list: (limit?: number, page?: number): Promise<ISessionsEnvelope> =>
-    requests.get(`/sessions?limit=${limit}&offset=${page ? page * limit! : 0}`),
+  list: (params: URLSearchParams): Promise<ISessionsEnvelope> =>
+    axios
+      .get("/sessions", { params: params })
+      .then(sleep(1000))
+      .then(responseBody),
   details: (id: string) => requests.get(`/sessions/${id}`),
   create: (session: ISession) => requests.post("/sessions", session),
   update: (session: ISession) =>
