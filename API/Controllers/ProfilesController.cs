@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Profiles;
 using MediatR;
@@ -13,6 +14,11 @@ namespace API.Controllers {
         [HttpPut]
         public async Task<ActionResult<Unit>> Edit (Edit.Command command) {
             return await Mediator.Send (command);
+        }
+
+        [HttpGet ("{username}/sessions")]
+        public async Task<ActionResult<List<UserSessionDto>>> GetUserSessions (string username, string predicate) {
+            return await Mediator.Send (new ListSessions.Query { Username = username, Predicate = predicate });
         }
     }
 }

@@ -69,6 +69,7 @@ const requests = {
       .delete(url)
       .then(sleep(1000))
       .then(responseBody),
+
   postForm: (url: string, file: Blob) => {
     let formData = new FormData();
     formData.append("File", file);
@@ -111,7 +112,9 @@ const Profiles = {
   setMainPhoto: (id: string) => requests.post(`/photos/${id}/setMain`, {}),
   deletePhoto: (id: string) => requests.del(`/photos/${id}`),
   updateProfile: (profile: Partial<IProfile>) =>
-    requests.put(`/profiles`, profile)
+    requests.put(`/profiles`, profile),
+  listSessions: (username: string, predicate: string) =>
+    requests.get(`/profiles/${username}/sessions?predicate=${predicate}`)
 };
 
 const Kids = {
