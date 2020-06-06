@@ -47,6 +47,7 @@ namespace Persistence {
                     UserKids = new List<UserKid> {
                     new UserKid {
                     AppUserId = "a",
+                    IsParent = true,
                     },
                     },
                     },
@@ -54,7 +55,13 @@ namespace Persistence {
                     Name = "Jenny",
                     Age = "10",
                     Interests = "Legos",
-                    WorkingOn = "Writing"
+                    WorkingOn = "Writing",
+                    UserKids = new List<UserKid> {
+                    new UserKid {
+                    AppUserId = "b",
+                    IsParent = true,
+                    },
+                    },
                     },
                     new Kid {
                     Name = "Sam",
@@ -76,7 +83,7 @@ namespace Persistence {
                     Date = DateTime.Now.AddMonths (-2),
                     Timeblock = "9am - 1pm",
                     Description = "Sidewalk paint, sculpture soap, crea a climb-through greeting card and more.",
-                    Category = "Arts and Crafts",
+                    Category = "Nature",
                     Address = "2915 NE Jarrett St",
                     City = "Portland",
                     Activity1 = "Sidewalk Painting: Mix baking soda, cornstarch, and warm (nearly hot) water in a container. Add water until you get to the desired consistency. Add food coloring.After the painting is done, put vinegar into the spray bottle and spray the paint. It will foam and fizzle like magic! Paint may be stored in a sealed container.",
@@ -93,7 +100,7 @@ namespace Persistence {
                     Date = DateTime.Now.AddMonths (-1),
                     Timeblock = "1pm - 5pm",
                     Description = "Learn about the phases of the moon with stories and art.",
-                    Category = "Science",
+                    Category = "Nature",
                     Address = "1503 NE Schuyler St",
                     City = "Portland",
                     Activity2 = "Moon story, moon crater art project, video about moon phases, make moon sand",
@@ -110,7 +117,7 @@ namespace Persistence {
                     Date = DateTime.Now.AddMonths (1),
                     Timeblock = "9am - 5pm",
                     Description = "Learn about the parts of a screenplay, write it and create a short movie.",
-                    Category = "Language",
+                    Category = "Nature",
                     Address = "1544 NE 34th St",
                     City = "Portland",
                     Activity1 = "Choose a story to turn into a screenplay. Describe how to write a scene. Write them in pairs.",
@@ -128,7 +135,7 @@ namespace Persistence {
                     Date = DateTime.Now.AddMonths (2),
                     Timeblock = "9am - 1m",
                     Description = "Learn the value of a quarter, nickle and dime. Set up a store and learn to spend your money wisely.",
-                    Category = "Math",
+                    Category = "Nature",
                     Address = "2915 NE Jarrett St.",
                     City = "Portland",
                     Activity1 = "Count the coins, store set up, shopping activity.",

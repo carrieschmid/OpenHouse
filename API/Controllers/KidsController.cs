@@ -13,7 +13,7 @@ namespace API.Controllers {
     public class KidsController : BaseController {
 
         [HttpGet]
-        public async Task<ActionResult<List<Kid>>> List () {
+        public async Task<ActionResult<List<KidDto>>> List () {
             return await Mediator.Send (new List.Query ());
         }
 
@@ -25,7 +25,7 @@ namespace API.Controllers {
 
         //this should be api/kids
         [HttpPost]
-        public async Task<ActionResult<Unit>> Create (Add.Command command) {
+        public async Task<ActionResult<Unit>> Create (Create.Command command) {
             return await Mediator.Send (command);
         }
 
@@ -39,6 +39,16 @@ namespace API.Controllers {
         public async Task<ActionResult<Unit>> Delete (Guid id) {
             return await Mediator.Send (new Delete.Command { Id = id });
         }
+
+        // [HttpPost ("{id}/attend")]
+        // public async Task<ActionResult<Unit>> Parent (Guid id) {
+        //     return await Mediator.Send (new Parent.Command { Id = id });
+        // }
+
+        // [HttpDelete ("{id}/attend")]
+        // public async Task<ActionResult<Unit>> Unattend (Guid id) {
+        //     return await Mediator.Send (new Unattend.Command { Id = id });
+        // }
 
     }
 }

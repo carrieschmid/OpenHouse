@@ -117,14 +117,15 @@ const Profiles = {
     requests.get(`/profiles/${username}/sessions?predicate=${predicate}`)
 };
 
-const Kids = {
-  getKid: (username: string): Promise<IKid> =>
-    requests.get(`/${username}/kids`),
-  addKid: (username: string): Promise<IKid> => requests.get(`/${username}/kids`)
-};
+// const Kids = {
+//   getKid: (username: string): Promise<IKid> =>
+//     requests.get(`/kids/${username}`),
+//   addKid: (username: string): Promise<IKid> => requests.get(`/kids/${username}`)
+// };
+
 export default {
   Sessions,
   User,
-  Profiles,
-  Kids
+  Profiles
+  // Kids
 };

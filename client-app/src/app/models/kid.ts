@@ -3,6 +3,7 @@ export interface IKid {
   age: string;
   interests: string;
   workingOn: string;
+  isParent: boolean;
 
   // photos: IPhoto[];
 }

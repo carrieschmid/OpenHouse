@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Interfaces;
+using AutoMapper;
 using Domain;
 // using FluentValidation;
 using MediatR;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Kids {
-    public class Add {
+    public class Create {
         public class Command : IRequest {
             public Guid Id { get; set; }
             //Guid allows to create id from service side or client side
@@ -22,8 +23,10 @@ namespace Application.Kids {
 
         public class Handler : IRequestHandler<Command> {
             private readonly DataContext _context;
+            private readonly IMapper _mapper;
             private readonly IUserAccessor _userAccessor;
-            public Handler (DataContext context, IUserAccessor userAccessor) {
+            public Handler (DataContext context, IMapper mapper, IUserAccessor userAccessor) {
+                _mapper = mapper;
                 _userAccessor = userAccessor;
                 _context = context;
             }
@@ -44,13 +47,14 @@ namespace Application.Kids {
 
                     var user = await _context.Users.SingleOrDefaultAsync (x => x.UserName == _userAccessor.GetCurrentUsername ());
 
-                    var userkid = new UserKid {
+                    var parent = new UserKid {
                         AppUser = user,
                         Kid = kid,
+                        IsParent = true
 
                     };
 
-                    _context.UserKids.Add (userkid);
+                    _context.UserKids.Add (parent);
 
                     var success = await
                     _context.SaveChangesAsync () > 0;
