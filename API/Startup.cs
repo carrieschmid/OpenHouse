@@ -121,6 +121,8 @@ namespace API {
             }
 
             // app.UseHttpsRedirection();
+            app.UseDefaultFiles ();
+            app.UseStaticFiles ();
 
             app.UseRouting ();
 
@@ -134,6 +136,7 @@ namespace API {
                 endpoints.MapControllers ();
                 endpoints.MapHub<ChatHub> ("/chat");
                 //when comes to this url, it knows to direct here
+                endpoints.MapFallbackToController ("Index", "Fallback");
             });
 
         }
