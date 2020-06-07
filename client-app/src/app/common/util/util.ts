@@ -8,7 +8,12 @@ export const combinedDateAndTime = (date: Date, time: Date) => {
   const day = date.getDate();
   const dateString = `${year}-${month}-${day}`;
 
-  return new Date(dateString + " " + timeString1);
+  //Safari fix
+  // const dateString = date.toISOString().split("T")[0];
+  // const timeString1 = "0:00";
+  // return new Date(dateString + "T" + timeString);
+
+  return new Date(dateString + "" + timeString1);
 };
 
 export const setSessionProps = (session: ISession, user: IUser) => {

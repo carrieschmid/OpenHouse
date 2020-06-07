@@ -47,7 +47,11 @@ namespace API {
             });
             services.AddCors (opt => {
                 opt.AddPolicy ("CorsPolicy", policy => {
-                    policy.AllowAnyHeader ().AllowAnyMethod ().WithOrigins ("http://localhost:3000")
+                    policy
+                        .AllowAnyHeader ()
+                        .AllowAnyMethod ()
+                        .WithExposedHeaders ("WWW-Authenticate")
+                        .WithOrigins ("http://localhost:3000")
                         .AllowCredentials ();
                 });
             });
@@ -86,7 +90,9 @@ namespace API {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = key,
                 ValidateAudience = false,
-                ValidateIssuer = false
+                ValidateIssuer = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
                 };
                 opt.Events = new JwtBearerEvents {
                     OnMessageReceived = context => {

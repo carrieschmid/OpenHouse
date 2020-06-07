@@ -33,6 +33,7 @@ namespace Application.Sessions {
                     throw new RestException (HttpStatusCode.NotFound, new { Session = "Could not find activity." });
 
                 var user = await _context.Users.SingleOrDefaultAsync (x => x.UserName == _userAccessor.GetCurrentUsername ());
+
                 var attendance = await _context.UserSessions.SingleOrDefaultAsync (x => x.SessionId == session.Id && x.AppUserId == user.Id);
 
                 if (attendance != null)

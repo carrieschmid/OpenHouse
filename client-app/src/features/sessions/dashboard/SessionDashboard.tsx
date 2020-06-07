@@ -3,7 +3,7 @@ import { Grid, Button, Loader } from "semantic-ui-react";
 import SessionList from "./SessionList";
 import { observer } from "mobx-react-lite";
 import { Link, NavLink } from "react-router-dom";
-import { LoadingComponent } from "../../../app/layout/LoadingComponent";
+import SessionListItemPlaceholder from "./SessionListItemPlaceholder";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 import InfiniteScroll from "react-infinite-scroller";
 import SessionFilters from "./SessionFilters";
@@ -29,19 +29,21 @@ export const SessionDashboard: React.FC = () => {
     loadSessions();
   }, [loadSessions]);
 
-  if (loadingInitial && page === 0)
-    return <LoadingComponent content="Loading sessions...." />;
   return (
     <Grid>
       <Grid.Column width={10}>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={handleGetNext}
-          hasMore={!loadingNext && page + 1 < totalPages}
-          initialLoad={false}
-        >
-          <SessionList />
-        </InfiniteScroll>
+        {loadingInitial && page === 0 ? (
+          <SessionListItemPlaceholder />
+        ) : (
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={handleGetNext}
+            hasMore={!loadingNext && page + 1 < totalPages}
+            initialLoad={false}
+          >
+            <SessionList />
+          </InfiniteScroll>
+        )}
       </Grid.Column>
       <Grid.Column width={6}>
         <Button
