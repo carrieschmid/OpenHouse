@@ -2,7 +2,6 @@ import { ISession, IAttendee } from "../../models/session";
 import { IUser } from "../../models/user";
 
 export const combinedDateAndTime = (date: Date, time: Date) => {
-  const timeString1 = "0:00";
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -13,7 +12,7 @@ export const combinedDateAndTime = (date: Date, time: Date) => {
   // const timeString1 = "0:00";
   // return new Date(dateString + "T" + timeString);
 
-  return new Date(dateString + "" + timeString1);
+  return new Date(dateString);
 };
 
 export const setSessionProps = (session: ISession, user: IUser) => {
