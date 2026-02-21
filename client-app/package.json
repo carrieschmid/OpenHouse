@@ -39,8 +39,8 @@
     "uuid": "^7.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "postbuild": "mv build ../API/wwwroot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
