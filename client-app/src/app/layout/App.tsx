@@ -19,6 +19,7 @@ import LoadingComponent from "./LoadingComponent";
 import ModalContainer from "../common/modals/ModalContainer";
 import ProfilePage from "../../features/profiles/ProfilePage";
 import PrivateRoute from "./PrivateRoute";
+import AboutPage from "../../features/pages/AboutPage";
 
 const App: React.FC<RouteComponentProps> = ({ location }) => {
   const rootStore = useContext(RootStoreContext);
@@ -62,6 +63,7 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
                   path="/profile/:username"
                   component={ProfilePage}
                 />
+                <Route path="/about" component={AboutPage} />
                 <Route component={NotFound} />
               </Switch>
             </Container>

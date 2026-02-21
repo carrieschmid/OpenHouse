@@ -28,6 +28,14 @@ const HomePage = () => {
               inverted
               content={`Welcome back ${user.displayName}`}
             />
+            <Header as="h5" inverted textAlign="left">
+              OpenHouse extends teaching and learning beyond the four walls of
+              the home. Collaborate with other parents to create a community
+              that effectively and efficiently supports young learners.
+              OpenHouse provides a structure to connect and organize families to
+              share their resources and time with each other.{" "}
+              <Link to="/about">Learn more about this unique community.</Link>
+            </Header>
 
             <Button as={Link} to="/sessions" size="huge" inverted>
               Go to sessions!
@@ -41,8 +49,8 @@ const HomePage = () => {
               the home. Collaborate with other parents to create a community
               that effectively and efficiently supports young learners.
               OpenHouse provides a structure to connect and organize families to
-              share their resources and time with each other. Learn more about
-              this unique community.
+              share their resources and time with each other.{" "}
+              <Link to="/about">Learn more about this unique community.</Link>
             </Header>
             <Button
               onClick={() => openModal(<LoginForm />)}
