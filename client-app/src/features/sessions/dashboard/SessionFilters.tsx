@@ -6,7 +6,30 @@ import { observer } from "mobx-react-lite";
 
 const SessionFilters = () => {
   const rootStore = useContext(RootStoreContext);
-  const { predicate, setPredicate } = rootStore.sessionStore;
+  const { predicate, setPredicate, sessionsByDate } = rootStore.sessionStore;
+
+  const sessionDates = new Set(sessionsByDate.map(([date]) => date));
+
+  const DayWithIndicator = ({ date, label }: { date: Date; label: string }) => {
+    const dateStr = date.toISOString().split("T")[0];
+    return (
+      <span>
+        {label}
+        {sessionDates.has(dateStr) && (
+          <div
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "#00b5ad",
+              margin: "0 auto"
+            }}
+          />
+        )}
+      </span>
+    );
+  };
+
   return (
     <Fragment>
       <Menu vertical size={"large"} style={{ width: "100%", marginTop: 50 }}>
@@ -42,6 +65,7 @@ const SessionFilters = () => {
       <Calendar
         onChange={(date) => setPredicate("startDate", date!)}
         value={predicate.get("startDate") || new Date()}
+        dayComponent={DayWithIndicator}
       />
     </Fragment>
   );
