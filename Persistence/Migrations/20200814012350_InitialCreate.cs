@@ -371,8 +371,7 @@ namespace Persistence.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                );
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_AuthorId",
