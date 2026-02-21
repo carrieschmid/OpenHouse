@@ -4,7 +4,7 @@ WORKDIR /app/client-app
 COPY client-app/package*.json ./
 RUN npm install
 COPY client-app/ ./
-RUN npm run build
+RUN mkdir -p ../API && npm run build
 
 # Stage 2: Build .NET app
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS dotnet-build
