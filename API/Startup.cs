@@ -50,7 +50,7 @@ namespace API {
         public void ConfigureProductionServices (IServiceCollection services) {
             services.AddDbContext<DataContext> (opt => {
                 opt.UseLazyLoadingProxies ();
-                opt.UseSqlServer (Configuration.GetConnectionString ("DefaultConnection"));
+                opt.UseNpgsql (Configuration.GetConnectionString ("DefaultConnection"));
 
             });
             ConfigureServices (services);
