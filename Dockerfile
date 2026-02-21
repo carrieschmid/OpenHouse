@@ -17,4 +17,5 @@ RUN dotnet publish API/API.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=dotnet-build /app/publish .
+COPY --from=react-build /app/API/wwwroot/ ./wwwroot/
 CMD ["sh", "-c", "ASPNETCORE_URLS=http://+:$PORT dotnet API.dll"]
