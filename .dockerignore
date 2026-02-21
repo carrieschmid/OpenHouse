@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+**/.git/
+client-app/node_modules/
+client-app/build/
+API/wwwroot/
+publish/
+**/*.db
