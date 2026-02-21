@@ -7,14 +7,14 @@ COPY client-app/ ./
 RUN npm run build && mkdir -p ../API/wwwroot && cp -r build/. ../API/wwwroot/
 
 # Stage 2: Build .NET app
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS dotnet-build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS dotnet-build
 WORKDIR /app
 COPY . .
 COPY --from=react-build /app/API/wwwroot/ ./API/wwwroot/
 RUN dotnet publish API/API.csproj -c Release -o /app/publish
 
 # Stage 3: Runtime
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
 COPY --from=dotnet-build /app/publish .
 COPY --from=react-build /app/API/wwwroot/ ./wwwroot/
