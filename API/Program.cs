@@ -22,7 +22,7 @@ namespace API {
                 try {
                     var context = services.GetRequiredService<DataContext> ();
                     var userManager = services.GetRequiredService<UserManager<AppUser>> ();
-                    context.Database.Migrate ();
+                    context.Database.EnsureCreated ();
                     Seed.SeedData (context, userManager).Wait ();
 
                 } catch (Exception ex) {
