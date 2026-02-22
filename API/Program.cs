@@ -21,8 +21,12 @@ namespace API {
                 var services = scope.ServiceProvider;
                 try {
                     var context = services.GetRequiredService<DataContext> ();
+                    Console.WriteLine ($"DB Provider: {context.Database.ProviderName}");
+                    Console.WriteLine ($"DB Connection: {context.Database.GetDbConnection ().ConnectionString}");
                     var userManager = services.GetRequiredService<UserManager<AppUser>> ();
+                    Console.WriteLine ("Calling Migrate()...");
                     context.Database.Migrate ();
+                    Console.WriteLine ("Migrate() succeeded!");
                     Seed.SeedData (context, userManager).Wait ();
 
                 } catch (Exception ex) {
