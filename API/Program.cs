@@ -26,6 +26,8 @@ namespace API {
                     Seed.SeedData (context, userManager).Wait ();
 
                 } catch (Exception ex) {
+                    Console.Error.WriteLine ($"STARTUP ERROR: {ex.GetType ().Name}: {ex.Message}");
+                    Console.Error.WriteLine (ex.StackTrace);
                     var logger = services.GetRequiredService<ILogger<Program>> ();
                     logger.LogError (ex, "An error occured during migration.");
                 }
