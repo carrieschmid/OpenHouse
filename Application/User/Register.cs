@@ -79,7 +79,7 @@ namespace Application.User {
                     };
                 }
 
-                throw new Exception ("Problem creating user.");
+                throw new Exception (string.Join(", ", result.Errors.Select(e => e.Description)));
 
             }
         }
